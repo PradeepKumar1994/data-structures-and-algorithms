@@ -8,8 +8,9 @@ int push(int value);
 int pop(void);
 int overflow(void);
 int underflow(void);
+int printing(void);
 
-int stack[MAX];
+int *stack[MAX] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 int stack_size = 0;
 int stack_size_not_change = 0;
 char *stack_operations[4] = {"push", "pop", "printing", "exit"};
@@ -25,7 +26,6 @@ void main(void)
         printf("Please enter the size of the stack:  ");
         scanf("%d", &stack_size);
     } while (stack_size < 0);
-    
 
     printf("Size of the stack is %d \n", stack_size);
 
@@ -38,7 +38,14 @@ void main(void)
 
         if(strcmp(operation, stack_operations[0]) == 0)
         {
-            if(stack_size > 0)
+            
+            if(stack_size < 0)
+            {
+
+                printf("-----Stack is full! Please clear few elements----");
+            }
+
+            else if(stack_size >= 0)
             {
                 do
                 {
@@ -48,20 +55,8 @@ void main(void)
                 }while (stack_size<0);
                 
                 stack_size_not_change = stack_size;
-
-                if(!push(push_value))
-                {
-                    
-                    printf("Value inserted in the stack should be greater than -1\n");
-
-                }
-
-            }
-            
-            if(stack_size == 0)
-            {
-
-                printf("----Stack is full! Please clear few elements.----");
+                push(push_value);
+                stack_size-- ;
             }
         }
 
@@ -102,23 +97,21 @@ int push(int value)
     {
         return 0;
     }
+    
+    stack[stack_size-1] = &(value);
 
-    stack[i] = value;
-    return 1;
+    printf("Value: %d inserted at %d", value, *stack[stack_size]);
 }
 
 int printing(void)
 {
 
     printf("Stack elements are: ");
-
-    //printf("%d", stack[1]);
-
-    //printf("%d", stack[0]);
     
-    for(int i = MAX; i > -1; i--)
+    for(int i = 0; i < stack_size_not_change; i++)
     {
-        printf("%i ", stack[i]);
+
+        printf("%i ", *stack[i]);
     }
 
 
