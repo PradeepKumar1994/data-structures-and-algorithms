@@ -5,10 +5,8 @@
 #define MAX 9
 
 int push(int value);
-int pop(void);
-int overflow(void);
-int underflow(void);
-int printing(void);
+void pop(void);
+void printing(void);
 
 int *stack[MAX] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 int stack_size = 0;
@@ -27,6 +25,7 @@ void main(void)
         scanf("%d", &stack_size);
     } while (stack_size < 0);
 
+    stack_size_not_change = stack_size;
     printf("Size of the stack is %d \n", stack_size);
 
     while(int_type)
@@ -39,13 +38,13 @@ void main(void)
         if(strcmp(operation, stack_operations[0]) == 0)
         {
             
-            if(stack_size < 0)
+            if(stack_size == 0)
             {
 
-                printf("-----Stack is full! Please clear few elements----");
+                printf("-----Stack is full! Please clear few elements----\n");
             }
 
-            else if(stack_size >= 0)
+            else if(stack_size > 0)
             {
                 do
                 {
@@ -54,7 +53,6 @@ void main(void)
 
                 }while (stack_size<0);
                 
-                stack_size_not_change = stack_size;
                 push(push_value);
                 stack_size-- ;
             }
@@ -62,14 +60,20 @@ void main(void)
 
         else if (strcmp(operation, stack_operations[1]) == 0) // pop 
         {
-            stack_size = stack_size - 1;//incrementing the size of stack as elements are removed
-            
-            printf("Pop entered\n");
+            if(stack_size  == stack_size_not_change)
+            {
+                printf("Stack underflow has occurred, since no elements in the stack");
+            }
+            else
+            {                
+                pop();
+            }
         }
 
         else if(strcmp(operation, stack_operations[2]) == 0) //print
         {
             printf("Printing all elements in stack\n");
+            
             printing();
         }
 
@@ -98,26 +102,37 @@ int push(int value)
         return 0;
     }
     
-    stack[stack_size-1] = &(value);
+    stack[stack_size-1] = (value);
 
-    printf("Value: %d inserted at %d", value, *stack[stack_size]);
+    printf("Value: %d inserted at %d", value, stack[stack_size-1]);
 }
 
-int printing(void)
+void printing(void)
 {
 
     printf("Stack elements are: ");
     
-    for(int i = 0; i < stack_size_not_change; i++)
+    for(int i = stack_size_not_change-1; i >= 0; i--)
     {
-
-        printf("%i ", *stack[i]);
+        printf("%i ", stack[i]);
     }
-
 
 }
 
+void pop(void)
+{
 
-//int pop(void);
+    printf("Pop entered!");
+
+    printf("Element in the Stack %d", stack[stack_size]);
+
+    stack[stack_size] = NULL;
+                
+    //incrementing the size of stack as elements are removed
+    stack_size++ ;                  
+                
+    printf("Size of stack_size %d", stack_size);
+}
+
 //int overflow(void);
 //int underflow(void);
