@@ -8,7 +8,7 @@ int push(int value);
 void pop(void);
 void printing(void);
 
-int *stack[MAX] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+int stack[MAX] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 int stack_size = 0;
 int stack_size_not_change = 0;
 char *stack_operations[4] = {"push", "pop", "printing", "exit"};
