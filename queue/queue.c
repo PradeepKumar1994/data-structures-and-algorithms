@@ -27,6 +27,8 @@ void main(void)
 
     }while(queue_size < 1);
     
+    printf("Queue_size is %d", queue_size);
+    queue_size = queue_size - 1;
     queue_size_not_change = queue_size;
 
     
@@ -56,20 +58,29 @@ void main(void)
                 printf("The size of Queue is full!");
             }
 
-            for (enqueue_loop = enqueue_loop; enqueue_loop < queue_size_not_change; enqueue_loop++)
+
+            if(queue_size > -1)
             {
-                //pushing the elements into the queue structure
 
-                printf("Please enter the element ");
-                scanf("%d",&value);
+                for (enqueue_loop = enqueue_loop; enqueue_loop <= queue_size_not_change; enqueue_loop++)
+                {
+                    //pushing the elements into the queue structure
+                    printf("Please enter the element ");
+                    scanf("%d",&value);
 
-                enqueue(value, enqueue_loop);
-                queue_size-- ;  
-                enqueue_loop++;
+                    enqueue(value, enqueue_loop);
+                    queue_size--;  
+                    enqueue_loop++;
+                    printf("Print the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
 
-                printf("Print the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
+                    if(queue_size == -1)
+                    {
+                        enqueue_loop = queue_size_not_change+1;
+                    }
 
-                break;
+                    break;
+                }
+
             }
         }
         
@@ -79,10 +90,10 @@ void main(void)
             printf("we remove elements for this function");
             dequeue(enqueue_loop);
 
-            printf("Print the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
-
-            enqueue_loop--;
+            enqueue_loop=0;
             queue_size++;
+
+            printf("Print the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
 
         }
 
@@ -138,7 +149,7 @@ void enqueue(int value, int enqueue_loop)
 void print(void)
 {
 
-    for (int i = 0; i < queue_size_not_change; i++)
+    for (int i = 0; i <= queue_size_not_change; i++)
     {
         printf("%d ", queue[i]);
     }
@@ -153,11 +164,13 @@ void dequeue(int enqueue_loop)
 
     printf("Removing %d from the queue", queue[enqueue_loop-1]);
 
-    queue[enqueue_loop-1] = 0;
+    //queue[enqueue_loop] = 0;
 
     queue_enqueue_order(enqueue_loop);
 
-    queue[0] = 0;
+    queue[0] = -1;
+
+    print();
 
     //queue_size++;
 
