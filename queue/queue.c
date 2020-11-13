@@ -16,6 +16,7 @@ char *instruction_seq[4] = {"print", "push", "pop", "exit"};
 bool loop = true;
 
 
+
 void main(void)
 {
 
@@ -65,16 +66,24 @@ void main(void)
                 enqueue(value, enqueue_loop);
                 queue_size-- ;  
                 enqueue_loop++;
+
+                printf("Print the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
+
                 break;
             }
         }
         
         else if(strcmp(instruction, instruction_seq[2]) == 0)
         {
-            //removing the elements into the queue structure
+            //pop function - removing the elements into the queue structure
             printf("we remove elements for this function");
-            
             dequeue(enqueue_loop);
+
+            printf("Print the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
+
+            enqueue_loop--;
+            queue_size++;
+
         }
 
         else if (strcmp(instruction, instruction_seq[3]) == 0)
@@ -136,6 +145,7 @@ void print(void)
     
 }
 
+
 void dequeue(int enqueue_loop)
 {
     
@@ -143,7 +153,12 @@ void dequeue(int enqueue_loop)
 
     printf("Removing %d from the queue", queue[enqueue_loop-1]);
 
-    queue[enqueue_loop] = 0;
+    queue[enqueue_loop-1] = 0;
 
-    queue_size++;
+    queue_enqueue_order(enqueue_loop);
+
+    queue[0] = 0;
+
+    //queue_size++;
+
 }
