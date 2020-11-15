@@ -1,6 +1,7 @@
 # data-structures-and-algorithms
 
-> The repository is the implementation of well-known data structures and algorithms the implementation contents are as follows:
+> The repository is the implementation of well-known data structures and algorithms the implementation. 
+> All the programs are and will be implemented in C and C++. Contents are as follows:
 
 ## Table of contents
 
