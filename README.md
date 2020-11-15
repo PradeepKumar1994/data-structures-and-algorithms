@@ -4,6 +4,6 @@
 
 ## Table of contents
 
-- [Stack](#stack)
-- [Queue](#queue)
+- [Stack](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/stack/stack.c)
+- [Queue](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/queue/queue.c)
 - [Linked Lists](#linked-lists)
