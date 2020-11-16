@@ -7,10 +7,11 @@ void enqueue(int value, int enqueue_loop);
 void print(void);
 void dequeue(int enqueue_loop);
 void queue_enqueue_order(int enqueue_loop);
+void queue_dequeue_order(int enqueue_loop);
 
-int queue_size;
-int queue[MAX] = {0,0,0,0,0,0,0,0,0};
-int queue_size_not_change;
+int queue_size; //size of the queue fluctues as the elements are inserted or deleted
+int queue[MAX] = {0,0,0,0,0,0,0,0,0}; // a global array for queue
+int queue_size_not_change; //size of the user pass as  a final reference
 
 char *instruction_seq[4] = {"print", "push", "pop", "exit"};
 bool loop = true;
@@ -56,7 +57,7 @@ void main(void)
         else if(strcmp(instruction, instruction_seq[1]) ==0 )
         {
 
-            if(enqueue_loop == queue_size_not_change - 1)
+            if(enqueue_loop == queue_size_not_change)
             {
                 printf("The size of Queue is full!");
             }
@@ -74,7 +75,9 @@ void main(void)
                     enqueue(value, enqueue_loop);
                     queue_size--;  
                     enqueue_loop++;
-                    printf("\nPrint the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
+                    
+                    //Following loc is used as part of debugging
+                    //printf("\nPrint the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
 
                     if(queue_size == -1)
                     {
@@ -99,7 +102,8 @@ void main(void)
                 enqueue_loop--;
                 queue_size++;
 
-                printf("Print the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
+                //Following loc is used as part of debugging
+                //printf("Print the size of queue %d and enqueue loop %d", queue_size, enqueue_loop);
 
             }
 
@@ -121,18 +125,14 @@ void main(void)
 void queue_enqueue_order(int enqueue_loop)
 {
     int temp;
-    for (int i = enqueue_loop ; i > -1; i--)
+    for (int i = queue_size_not_change; i > -1; i--)
     {
 
-        if(queue[i] != 0)
-        {
-            temp = queue[i];
+        temp = queue[i];
 
-            queue[i+1] = temp;
+        queue[i+1] = temp;
 
-            queue[i] = 0;
-        }
-        
+        queue[i] = 0;
         //queue[0] will remain the same - this is handled at enqueue
 
     }
@@ -143,14 +143,14 @@ void queue_enqueue_order(int enqueue_loop)
 void enqueue(int value, int enqueue_loop)
 {
 
-    if(enqueue_loop != 0)
+    if(enqueue_loop >= 0)
     {
         
         queue_enqueue_order(enqueue_loop);
         queue[0] = value;           //we replace the queue[0] with the first element
 
     }
-    else if(enqueue_loop == 0)
+    else if(enqueue_loop == -1)
     {
         queue[0] = value;
     }
@@ -170,32 +170,58 @@ void print(void)
 }
 
 
+void queue_dequeue_order(int enqueue_loop)
+{
+    int temp;
+
+    for (int i = queue_size_not_change; i > -1; i--)
+    {
+
+        if(queue[i] != 0)
+        {
+            temp = queue[i];
+
+            queue[i+1] = temp;
+
+            queue[i] = 0;
+        }
+        
+        //queue[0] will remain the same - this is handled at enqueue
+
+    }
+    
+}
+
+
+
 void dequeue(int enqueue_loop)
 {
     
-    printf("this is working \n");
-    //queue[enqueue_loop] = 0;
-
     if (queue_size ==-1)
     {
         printf("Removing %d from the queue", queue[queue_size_not_change]);
 
-        queue_enqueue_order(enqueue_loop);
-
-        //queue[enqueue_loop] = 0;
+        queue_dequeue_order(enqueue_loop);
 
         queue[0] = 0;
     }
     
-    else
+    else if(queue[queue_size_not_change]==0)
     {
         printf("Removing %d from the queue", queue[enqueue_loop]);
-
-        queue_enqueue_order(enqueue_loop);
+        
+        queue_dequeue_order(enqueue_loop);
 
         queue[0] = 0;
 
-        print();
-    
     }
+    else
+    {
+        printf("Removing the element %d",queue[queue_size_not_change]);
+
+        queue_dequeue_order(enqueue_loop);
+
+        queue[0] = 0;
+    }
+
 }
