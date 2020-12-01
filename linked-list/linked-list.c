@@ -15,9 +15,6 @@ struct node
 };
 
 struct node *head, *temp_node, *new_node;
-head = NULL;
-//head = 0;
-
 void main(void)
 {
 
@@ -41,7 +38,6 @@ void main(void)
         else if(user_input == 1)
         {
             printf("Insertion executing..\n");
-            new_node = (struct node*) malloc(sizeof(struct node));
             insertion();
         }
 
@@ -68,45 +64,66 @@ void insertion(void)
 {
     //Used for debugging
     /*printf("Pointer: %p", new_node);*/
+    //new_node = (struct node*) malloc(sizeof(struct node));
+    
+    new_node = (struct node*)Marshal.AllocHGlobal(sizeof(struct node)).ToPointer();
     printf("Pointer to current node: %p", new_node);
     printf("Pointer to next_node: %p", new_node->next_addr);
     
     printf("Please enter the value to be inserted: ");
-    scanf("%d", new_node->value);
+    scanf("%p", new_node->value);
 
     new_node->next_addr = 0;
 
     if(head == 0)
     {
         temp_node = head = new_node;
-        printf("Value of head: %d and value of next address %p\n", head, head->next_addr);
+        temp_node->value = 0;
+        printf("Value of head: %d and value of next address %p\n", head->value, head->next_addr);
         }
     else if(temp_node == head)
     {
         head->next_addr = new_node;
+        printf("Head next address: %p \n", head->next_addr);
         temp_node = new_node;
         temp_node->next_addr = 0;
+        printf("Temp_node next address: %p \n", temp_node);
     }
     else
     {
         temp_node->next_addr = new_node;
+        printf("Address of previous node Temp_node next address: %p \n", temp_node->next_addr);
         temp_node = new_node;
+        printf("Temp_node new address: %p \n", temp_node);
     }
 }
 
 void print_value(void)
 {
-    struct node *print_temp;
-    
-    struct node *temp = *head;
+
+    struct node *temp = head;
 
     while(temp)
     {
-        printf("temp_node: %p", *temp);
-
-        printf("Data :");
-        printf("%d, ", temp_node->value);
+        //debugging purposes
+        printf("temp_node next address: %p \n", temp->next_addr); 
+        //debugging purposes
+        printf("Data of current node: %d \n", temp_node->value);
         temp = temp->next_addr;
     }
-
 }
+
+
+
+
+/*
+
+References - I found useful
+
+    https://stackoverflow.com/questions/1169858/global-memory-management-in-c-in-stack-or-heap (refer again)
+
+    https://stackoverflow.com/questions/39201738/getting-garbage-values-while-implementing-linked-list-using-structs-in-c-sharp#
+
+
+
+*/
