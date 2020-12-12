@@ -5,6 +5,7 @@
 //declaration of methods
 void insertion(void);
 void print_value(void);
+void insertionAtbeginning(void);
 
 //variable declaration
 
@@ -54,50 +55,85 @@ void main(void)
         {
             printf("Please re-enter your choice as per the instructions");
         }
-        
-
     }
-    
 }
 
 void insertion(void)
 {
-    //Used for debugging
-    /*printf("Pointer: %p", new_node);*/
-    new_node = (struct node*) malloc(sizeof(struct node));
-    //new_node = (struct node*)Marshal.AllocHGlobal(sizeof(struct node)).ToPointer();
-    printf("Pointer to current node: %p \n", new_node);
-    printf("Pointer to next_node: %p  \n", new_node->next_addr);
-    new_node->next_addr = 0;
 
-    printf("Please enter the value to be inserted: ");
-    scanf("%d", &new_node->value);
-    printf("Inserted data is: %d \n", new_node->value);
-
-    if(head == 0)
+    if(head == NULL)
     {
-        temp_node = head = new_node;
-        //temp_node->value = 0;
-        printf("Value of head: %d and value of next address %p\n", head->value, head->next_addr);
-        printf("Value of Temp_node: %d and value of next address %p\n", temp_node->value, temp_node->next_addr);
-        printf("Value of new_node: %d and value of next address %p\n", new_node->value, new_node->next_addr);
-        }
-    else if(temp_node == head)
-    {
-        head->next_addr = new_node;
-        printf("Head next address: %p \n", head->next_addr);
-        temp_node = new_node;
-        temp_node->next_addr = 0;
-        printf("Temp_node current address: %p \n", temp_node);
-        printf("Temp_node next address: %p \n", temp_node->next_addr);
+        insertionAtbeginning();
     }
     else
     {
-        temp_node->next_addr = new_node;
-        printf("Address of previous node Temp_node next address: %p \n", temp_node->next_addr);
-        temp_node = new_node;
-        printf("Temp_node new address: %p \n", temp_node);
+    
+        //Comments used for debugging
+        /*printf("Pointer: %p", new_node);*/
+        new_node = (struct node*) malloc(sizeof(struct node));
+        //new_node = (struct node*)Marshal.AllocHGlobal(sizeof(struct node)).ToPointer();
+        printf("Pointer to current node: %p \n", new_node);
+        new_node->next_addr = 0;
+
+        if(new_node != NULL)
+        {
+            printf("Please enter the value to be inserted: ");
+            scanf("%d",&new_node->value);
+            printf("Inserted value: %d", new_node->value);
+
+            if(temp_node == head)
+            {
+                head->next_addr = new_node;
+                printf("Head next address: %p \n", head->next_addr);
+                temp_node = new_node;
+                temp_node->next_addr = 0;
+                printf("Temp_node current address: %p \n", temp_node);
+                printf("Temp_node next address: %p \n", temp_node->next_addr);
+                //free(new_node);
+            }
+            else
+            {
+                printf("Sanity check: %p",&(temp_node->value));
+                temp_node->next_addr = new_node;
+                printf("Address of previous node Temp_node next address: %p \n", temp_node->next_addr);
+                printf("Head next address: %p \n", head->next_addr);
+                temp_node = new_node;
+                printf("Temp_node new address: %p \n", temp_node);
+            }
+        }
     }
+}
+
+void insertionAtbeginning(void)
+{
+    printf("Work at progress\n");
+
+    if(head == 0)
+    {
+        //temp_node->value = 9999; - this will change the values of temp_node, head and new_node -
+        // as they are pointing to the same address.
+            int input;
+        //use the code from the insertion - you'll know what to do.
+
+        new_node = (struct node *) malloc(sizeof(struct node));
+        new_node->next_addr = 0;
+        printf("Debugging - New Node address: %p", new_node);
+
+        printf("Please enter the data");
+        scanf("%d", &input);
+
+        new_node->value = input;
+        printf("Sanity check: %p\n", new_node->value);
+        head = temp_node = new_node;
+        new_node->value = 0;
+        printf("Sanity check: %p\n", &new_node->value);
+        printf("Sanity check: %p\n", &head->value);
+    }
+    else
+    {
+        printf("This is for incorporating the insert at begining");
+    }
+    
 }
 
 void print_value(void)
@@ -105,11 +141,15 @@ void print_value(void)
 
     struct node *temp;
     temp = head;
+    
     printf("#-------------------------------------------------\n");
     while(temp)
     {
+        printf("Sanity check: %p\n", &temp->value);
+        
+        //printf("Temp current address: %p \n", temp);
         //debugging purposes
-        printf("temp_node next address: %p \n", temp->next_addr); 
+        //printf("temp_node next address: %p \n", temp->next_addr); 
         //debugging purposes
         printf("Data of current node: %d \n", temp_node->value);
         temp = temp->next_addr;
