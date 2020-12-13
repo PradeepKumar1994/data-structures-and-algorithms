@@ -70,9 +70,10 @@ void insertion(void)
     
         //Comments used for debugging
         /*printf("Pointer: %p", new_node);*/
+        printf("----> Address of previous node value %p", &new_node->value);
         new_node = (struct node*) malloc(sizeof(struct node));
         //new_node = (struct node*)Marshal.AllocHGlobal(sizeof(struct node)).ToPointer();
-        printf("Pointer to current node: %p \n", new_node);
+        printf("----> Address of previous node value %p", &new_node->value);
         new_node->next_addr = 0;
 
         if(new_node != NULL)
@@ -80,6 +81,7 @@ void insertion(void)
             printf("Please enter the value to be inserted: ");
             scanf("%d",&new_node->value);
             printf("Inserted value: %d", new_node->value);
+            printf("Previous value: %d", temp_node->value); // THis is the key the values of old is still being sustained. - Start here.
 
             if(temp_node == head)
             {
@@ -89,6 +91,8 @@ void insertion(void)
                 temp_node->next_addr = 0;
                 printf("Temp_node current address: %p \n", temp_node);
                 printf("Temp_node next address: %p \n", temp_node->next_addr);
+
+                print_value();
                 //free(new_node);
             }
             else
@@ -112,26 +116,24 @@ void insertionAtbeginning(void)
     {
         //temp_node->value = 9999; - this will change the values of temp_node, head and new_node -
         // as they are pointing to the same address.
-            int input;
         //use the code from the insertion - you'll know what to do.
 
-        new_node = (struct node *) malloc(sizeof(struct node));
+        new_node = (struct node*) malloc(sizeof(struct node));
         new_node->next_addr = 0;
-        printf("Debugging - New Node address: %p", new_node);
 
-        printf("Please enter the data");
-        scanf("%d", &input);
-
-        new_node->value = input;
-        printf("Sanity check: %p\n", new_node->value);
+        printf("Please enter the value to be inserted: ");
+        scanf("%d",&new_node->value);
+        printf("Inserted value: %d", new_node->value);
+        
+        //new_node->value = input;
+        //printf("Sanity check: %p\n", new_node->value);
         head = temp_node = new_node;
-        new_node->value = 0;
-        printf("Sanity check: %p\n", &new_node->value);
-        printf("Sanity check: %p\n", &head->value);
+        printf("Sanity check: %p\n", new_node->value);
+        printf("Sanity check: %p\n", head->value);
     }
     else
     {
-        printf("This is for incorporating the insert at begining");
+        printf("This is for incorporating the insertion at begining");
     }
     
 }
@@ -145,8 +147,6 @@ void print_value(void)
     printf("#-------------------------------------------------\n");
     while(temp)
     {
-        printf("Sanity check: %p\n", &temp->value);
-        
         //printf("Temp current address: %p \n", temp);
         //debugging purposes
         //printf("temp_node next address: %p \n", temp->next_addr); 
@@ -165,8 +165,6 @@ void print_value(void)
 References - I found useful
 
     https://stackoverflow.com/questions/1169858/global-memory-management-in-c-in-stack-or-heap (refer again)
-
-    https://stackoverflow.com/questions/39201738/getting-garbage-values-while-implementing-linked-list-using-structs-in-c-sharp#
 
 
 
