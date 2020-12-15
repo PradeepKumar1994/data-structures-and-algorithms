@@ -73,7 +73,7 @@ void insertion(void)
         printf("----> Address of previous node value %p", &new_node->value);
         new_node = (struct node*) malloc(sizeof(struct node));
         //new_node = (struct node*)Marshal.AllocHGlobal(sizeof(struct node)).ToPointer();
-        printf("----> Address of previous node value %p", &new_node->value);
+        printf("----> Address of current node value %p", &new_node->value);
         new_node->next_addr = 0;
 
         if(new_node != NULL)
@@ -151,7 +151,7 @@ void print_value(void)
         //debugging purposes
         //printf("temp_node next address: %p \n", temp->next_addr); 
         //debugging purposes
-        printf("Data of current node: %d \n", temp_node->value);
+        printf("Data of at %p node: %d \n", temp, temp->value);
         temp = temp->next_addr;
     }
     printf("#-------------------------------------------------");
