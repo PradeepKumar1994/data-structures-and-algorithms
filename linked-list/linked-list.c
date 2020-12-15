@@ -6,6 +6,7 @@
 void insertion(void);
 void print_value(void);
 void insertionAtbeginning(void);
+void insertionAtend(void);
 
 //variable declaration
 
@@ -19,7 +20,8 @@ struct node *head, *temp_node, *new_node;
 void main(void)
 {
 
-    int user_input, choice_loop = 1;
+    int user_input, choice_loop = 1, user_loop = 1;
+    char *user_string;
     printf("head: %d", head);
     printf("Please enter [0]: to print values\n");
     printf("Please enter [1]: to insert\n");
@@ -38,8 +40,28 @@ void main(void)
         
         else if(user_input == 1)
         {
-            printf("Insertion executing..\n");
-            insertion();
+            if(head==NULL)
+            {
+                printf("Insertion executing for initial node...\n");
+                insertionAtbeginning();
+            }
+            while(user_loop)
+            {
+                printf("Please enter the options for the following");
+                printf("Please enter [first]: to insert a node a begining of the list");
+                printf("Please enter [last]: to insert a node at the end of the list");
+                scanf("%s", &user_string);
+                if(strcmp("first", user_string) == 0)
+                {
+                    printf("Insertion executing..\n");
+                    insertionAtbeginning();
+                }
+                else if(strcmp("last", user_string) == 0)
+                {
+                    printf("Node insertion at end is initiated!");
+                    insertion();
+                }
+            }
         }
 
         else if(user_input == 2)
@@ -134,9 +156,9 @@ void insertionAtbeginning(void)
     else
     {
         printf("This is for incorporating the insertion at begining");
-    }
-    
+    }    
 }
+
 
 void print_value(void)
 {
@@ -147,10 +169,6 @@ void print_value(void)
     printf("#-------------------------------------------------\n");
     while(temp)
     {
-        //printf("Temp current address: %p \n", temp);
-        //debugging purposes
-        //printf("temp_node next address: %p \n", temp->next_addr); 
-        //debugging purposes
         printf("Data of at %p node: %d \n", temp, temp->value);
         temp = temp->next_addr;
     }
