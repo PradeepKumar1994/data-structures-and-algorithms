@@ -7,7 +7,7 @@ void insertion(void);
 void print_value(void);
 void insertionAtbeginning(void);
 void insertionAtend(void);
-
+void deleteAtend(void);
 //variable declaration
 
 struct node
@@ -21,7 +21,7 @@ void main(void)
 {
 
     int user_input, choice_loop = 1, user_loop = 1;
-    char *user_string;
+    char user_string[10];
     printf("head: %d", head);
     printf("Please enter [0]: to print values\n");
     printf("Please enter [1]: to insert\n");
@@ -32,6 +32,7 @@ void main(void)
     {
         printf("Please enter the information: ");
         scanf("%d", &user_input);
+
         if(user_input == 0)
         {
             printf("Printing values..");
@@ -45,21 +46,40 @@ void main(void)
                 printf("Insertion executing for initial node...\n");
                 insertionAtbeginning();
             }
-            while(user_loop)
+            else
             {
-                printf("Please enter the options for the following");
-                printf("Please enter [first]: to insert a node a begining of the list");
-                printf("Please enter [last]: to insert a node at the end of the list");
-                scanf("%s", &user_string);
-                if(strcmp("first", user_string) == 0)
+                user_loop = 1;
+                while(user_loop == 1)
                 {
-                    printf("Insertion executing..\n");
-                    insertionAtbeginning();
-                }
-                else if(strcmp("last", user_string) == 0)
-                {
-                    printf("Node insertion at end is initiated!");
-                    insertion();
+                    
+                    printf("Please enter the options for the following: \n");
+                    printf("\tPlease enter [first]: to insert a node a begining of the list\n");
+                    printf("\tPlease enter [last]: to insert a node at the end of the list\n");
+                    
+                    printf("Please enter your value: ");
+                    scanf("%s", &user_string);
+
+                    if(strcmp("first", user_string) == 0)
+                    {
+                        printf("Insertion executing..\n");
+                        insertionAtbeginning();
+                        user_loop = 0;
+                        printf("Inserting the value at the beginning..\n");
+                    }
+                    else if(strcmp("last", user_string) == 0)
+                    {
+                        printf("Node insertion at end is initiated!");
+                        insertion();
+
+                        //printf("Do you wish to continue: [y/n]: ");
+                        user_loop = 0;
+                    }
+                    else
+                    {
+                        printf("Your input is invalid. Please try again");
+                        user_input = 1;
+                    }
+                    
                 }
             }
         }
@@ -67,6 +87,10 @@ void main(void)
         else if(user_input == 2)
         {
             printf("Deletion executing");
+
+            printf("Address: %p\n", temp_node);
+            printf("Value is: %d\n", temp_node->value);
+
         }    
         else if(user_input == 3)
         {
@@ -108,14 +132,14 @@ void insertion(void)
             if(temp_node == head)
             {
                 head->next_addr = new_node;
-                printf("Head next address: %p \n", head->next_addr);
+                //printf("Head next address: %p \n", head->next_addr);
                 temp_node = new_node;
                 temp_node->next_addr = 0;
-                printf("Temp_node current address: %p \n", temp_node);
-                printf("Temp_node next address: %p \n", temp_node->next_addr);
+                //printf("Temp_node current address: %p \n", temp_node);
+                //printf("Temp_node next address: %p \n", temp_node->next_addr);
 
                 print_value();
-                //free(new_node);
+                //free(new_node); - DO NOT USE IT. FREE-ING CAUSES FREEING OF MEMORY SO YOU WOULD LOSE THE DATA AT THAT LOCATION.
             }
             else
             {
@@ -132,8 +156,7 @@ void insertion(void)
 
 void insertionAtbeginning(void)
 {
-    printf("Work at progress\n");
-
+    
     if(head == 0)
     {
         //temp_node->value = 9999; - this will change the values of temp_node, head and new_node -
@@ -150,14 +173,26 @@ void insertionAtbeginning(void)
         //new_node->value = input;
         //printf("Sanity check: %p\n", new_node->value);
         head = temp_node = new_node;
-        printf("Sanity check: %p\n", new_node->value);
-        printf("Sanity check: %p\n", head->value);
+        //printf("Sanity check: %p\n", new_node->value);
+        //printf("Sanity check: %p\n", head->value);
     }
     else
     {
-        printf("This is for incorporating the insertion at begining");
+        
+        new_node = (struct node*) malloc(sizeof(struct node));
+
+        new_node->next_addr = head;
+
+        head = new_node;
+
+        printf("Please enter the value of");
+        scanf("%d", &new_node->value);
+
+        print_value();
+        
     }    
 }
+
 
 
 void print_value(void)
