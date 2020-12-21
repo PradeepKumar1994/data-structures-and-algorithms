@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#define MAX 15
 
 //declaration of methods
 void insertion(void);
@@ -15,6 +16,9 @@ struct node
     int value;
     struct node *next_addr; 
 };
+
+int *deleted_address[MAX];
+int delete_count = 0;
 
 struct node *head, *temp_node, *new_node;
 void main(void)
@@ -88,8 +92,10 @@ void main(void)
         {
             printf("Deletion executing");
 
-            printf("Address: %p\n", temp_node);
-            printf("Value is: %d\n", temp_node->value);
+            deleteAtend();
+
+            //printf("Address: %p\n", temp_node); - this node needs to be deleted
+            
 
         }    
         else if(user_input == 3)
@@ -193,7 +199,25 @@ void insertionAtbeginning(void)
     }    
 }
 
+void deleteAtend(void)
+{
 
+    struct node *previous_address, *delete_loop = head->next_addr;
+
+/*      THIS MIGHT BE USEFUL IN CASE OF MULTIPLE DELETIONS - YET TO IMPLEMENT
+    while(delete_loop->next_addr != NULL)
+    {
+        previous_address = delete_loop;
+
+        delete_loop = delete_loop->next_addr;
+    }
+*/
+    deleted_address[delete_count] = temp_node;
+    
+    delete_count = delete_count + 1;
+    printf("Address: %p", temp_node);
+    printf("Address: %p", deleted_address[delete_count]);
+}
 
 void print_value(void)
 {
