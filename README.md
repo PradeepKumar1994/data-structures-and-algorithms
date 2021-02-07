@@ -1,6 +1,6 @@
 # data-structures-and-algorithms
 
-> The repository is the implementation of well-known data structures and algorithms the implementation. 
+> The repository is the implementation of well-known data structures and their use cases to solve a problem. 
 > All the programs are and will be implemented in either C or Python. Contents are as follows:
 
 ## Table of contents
