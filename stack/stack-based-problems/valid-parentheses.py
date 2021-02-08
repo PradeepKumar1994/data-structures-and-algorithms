@@ -18,10 +18,6 @@ class Stack(object):
                 
                 self.stack.append(value)
             
-            else:
-
-                print("valid input")
-                
 
     def pop(self): #pop
 
@@ -39,20 +35,47 @@ class Stack(object):
         return None
 
     def validation(self):
-        temp_stack = []
-        for i in range(len(self.input_element.values)):
 
-            pass
-                
+        temp_stack_keys =  self.input_element.keys()
+        temp_stack_values =  self.input_element.values()
+        print(temp_stack_values)
+        for i in range(0, len(temp_stack_keys), 2):
 
-            
+            if(i %2 == 0):
+                print(temp_stack_values[i])
+                decide = temp_stack_values[i] - temp_stack_values[i+1]
+
+                if(decide != 0):
+
+                    return "In Valid"
+
+        return "Valid"
+
 
             
 
     def print_all(self):
 
-        pass
+        for key, values in self.input_element.items():
+
+            print(values)
+
+            
 
     def exit(self):
 
         pass
+
+
+
+
+stack = Stack()
+
+
+stack.push('{')
+stack.push('{')
+stack.push('}')
+stack.push('}')
+stack.print_all()
+stack.validation()
+
