@@ -8,3 +8,13 @@
 - [Stack](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/stack/stack.c)
 - [Queue](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/queue/queue.c)
 - [Linked Lists](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/linked-list/linked-list.c)
+
+
+## To Learn
+My list to learn under queue:
+
+- [ ] Static Code Analysis
+- [ ] Time Complexity
+- [ ] Space Complexity
+
+
