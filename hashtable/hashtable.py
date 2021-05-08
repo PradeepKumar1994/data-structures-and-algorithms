@@ -70,27 +70,54 @@ class Hashtable:
         self.list_(hashpos, value)
     
 
-    def traverse(self):
+    def traverse(self, user_pos):
 
-        temp_traverse = self.hashaddress[10]
+        print(self.hash)
 
-        while(temp_traverse!= None):
+        temp_traverse = self.hashaddress[user_pos]
 
-            print('New elements: ',temp_traverse.data_)
+        print('Element in the list: ')
 
-            temp_traverse = temp_traverse.next_
+        try:
 
-        print('-----')
+            while(temp_traverse!= None):
 
-        print('Printing hash address..')
-              
-        print(self.hash[10].__dict__)
+                print('  ',temp_traverse.data_)
 
-        linkedlist.print_(self.hash[10].next_)
+                temp_traverse = temp_traverse.next_
 
-        print(self.hashaddress[10].__dict__)
+        except KeyError:
 
-        linkedlist.print_(self.hash[10].next_)
+            print(self.hash[user_pos])
+
+
+
+loop_condition = True
+
+print('Please refer the list for options: ')
+print('----------------------------------')
+print('1: Insert new element')
+print('2: Traverse for a position')
+
+
+hashtable = Hashtable()
+
+
+while(loop_condition):
+
+    user_input = int(input('Enter your choice: '))
+
+    if(user_input == 1):
+
+        value = input('Enter the value to be inserted: ')
+
+        hashtable.insert()
+
+    elif(user_input == 2):
+
+        user_pos = input('Please enter the position in the hashtable: ')
+
+        hashtable.traverse(user_pos)
 
 
 
@@ -110,17 +137,3 @@ table.print_table()
 table.traverse()
 
 
-
-
-
-#linkedlist = LinkedList()
-
-#linkedlist.insert(9)
-#linkedlist.insert(91)
-#linkedlist.insert(91)
-#linkedlist.insert(911)
-#linkedlist.insert(19)
-
-#linkedlist.insert(119)
-
-#linkedlist.print_()
