@@ -23,9 +23,10 @@ class LinkedList:
 
         self.last = None
 
-    def print_(self):
+    def print_(self, init_address = None):
 
-        temp = self.head
+        temp = init_address
+
         print('---------')
         while temp != None:
 
@@ -43,7 +44,7 @@ class LinkedList:
         if(self.head == None):
 
             self.head = Node(value)
-
+            print('=------=')
             print(self.head.data_)
 
             self.last = self.head
@@ -77,3 +78,19 @@ class LinkedList:
         return self.last
 
 
+
+
+
+
+
+#linkedlist = LinkedList()
+
+#linkedlist.insert(9)
+#linkedlist.insert(91)
+#linkedlist.insert(91)
+#linkedlist.insert(911)
+#linkedlist.insert(19)
+
+#linkedlist.insert(119)
+
+#linkedlist.print_()
