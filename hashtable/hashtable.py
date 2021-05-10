@@ -109,13 +109,13 @@ while(loop_condition):
 
     if(user_input == 1):
 
-        value = input('Enter the value to be inserted: ')
+        value = int(input('Enter the value to be inserted: '))
 
-        hashtable.insert()
+        hashtable.insert(value)
 
     elif(user_input == 2):
 
-        user_pos = input('Please enter the position in the hashtable: ')
+        user_pos = int(input('Please enter the position in the hashtable: '))
 
         hashtable.traverse(user_pos)
 
