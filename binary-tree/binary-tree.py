@@ -1,4 +1,10 @@
 
+"""
+
+@author: Pradeep
+
+"""
+
 class Binarytree:
 
     def __init__(self):
@@ -8,8 +14,8 @@ class Binarytree:
         self.count = 0
 
         self.queue = []
+        self.result = {'preorder': [], 'postorder': [], 'inorder':[]}
         self.stack = []
-
  
     def preorder(self, root = None):
 
@@ -17,43 +23,41 @@ class Binarytree:
 
             root = 0
 
+            self.result['preorder'].append(self.array[root])
+
+            print(self.result['preorder'])
+
         if(self.array[root] == 0):
 
             return 'Empty Tree'
 
         if(len(self.stack) != 0):
-            
-            print('---------')
-            
-            self.stack.pop()
 
             left = root + root + 1
 
             right = root+root+2
 
             try:
-
-                if(self.array[left] != 0):
-                    
-                    print('left root value: ', left)
-            
+                
+                print('left root value: ', left)
+                
+                if(self.array[left]!= 0):
                     self.stack.append(left)
-
+                    self.result['preorder'].append(self.array[left])
                     self.preorder(left)
 
+                print('right root value: ', right)
+
                 if(self.array[right] != 0):
-                    
-                    print('right root value: ', right)
-
                     self.stack.append(right)
-
+                    self.result['preorder'].append(self.array[right])
                     self.preorder(right)
 
             except IndexError:
 
                 print('root exception value: ', root)
         
-        return self.stack
+        return self.result['preorder']
 
     def traverse(self, value, root = None):
 
@@ -120,5 +124,7 @@ binarytree.insert(25)
 binarytree.insert(6)
 binarytree.print_()
 
-binarytree.preorder(root=0)
+result = binarytree.preorder()
+
+print(result)
 #binarytree.inorder_preprocess()
