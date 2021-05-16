@@ -64,14 +64,12 @@ class Binarytree:
 
         print('Stack: ',self.stack)
 
+        self.stack = []
+
         return self.result['preorder']
 
 
     def postorder(self, root = None):
-
-        print('--------POST ORDER TRAVERSAL -----------')
-
-        print('Current root is: ', root)
 
         if(root == None):
 
@@ -88,20 +86,33 @@ class Binarytree:
             right = root + root + 2
 
             try:
+
+                print('Left index:', left)
+                print('Right index:', right)
+                print()
+                print('Left element',self.array[left])
+                print('Right element: ',self.array[right])
+                print()
+                print('This is main array',self.array)
+                print('THis is result: ', self.result['postorder'])
+
                 if(self.array[left] == 0 and self.array[right] == 0):
 
+                    print(self.result['postorder'])
                     self.result['postorder'].append(self.array[root])
 
-                elif((self.array[left] in self.result['postorder'] and self.array[right] in self.queue[right]) \
-                        or (self.array[left] in self.result['postorder'] and self.array[right] == 0) \
-                        or (self.array[right] in self.result['postorder'] and self.array[left] == 0)):
+                elif((self.array[left] in self.result['postorder'] and self.array[right] in self.result['postorder']) \
+                    or (self.array[left] in self.result['postorder'] and self.array[right] == 0) \
+                    or (self.array[right] in self.result['postorder'] and self.array[left] == 0)):
 
+
+                    print('Executing ace in the hole')
                     self.result['postorder'].append(self.array[root])
 
                 if(self.array[left] != 0):
                 
                     self.stack.append(left)
-                    print(self.stack)
+                    print('This is stack: ',self.stack)
                     self.postorder(left)
 
                 if(self.array[right] != 0):
@@ -112,7 +123,6 @@ class Binarytree:
                     self.postorder(right)
 
             except IndexError:
-
                 
                 self.result['postorder'].append(self.array[root])
                 
@@ -186,6 +196,8 @@ binarytree.print_()
 
 #result = binarytree.preorder()
 #print(result)
+
+print('--------POST ORDER TRAVERSAL -----------')
 
 result = binarytree.postorder(root = 0)
 print(result)
