@@ -85,47 +85,40 @@ class Binarytree:
 
             right = root + root + 2
 
+            if(right >= len(self.array)):
+
+                return None
+
             try:
-
-                print('Left index:', left)
-                print('Right index:', right)
-                print()
-                print('Left element',self.array[left])
-                print('Right element: ',self.array[right])
-                print()
-                print('This is main array',self.array)
-                print('THis is result: ', self.result['postorder'])
-
-                if(self.array[left] == 0 and self.array[right] == 0):
-
-                    print(self.result['postorder'])
-                    self.result['postorder'].append(self.array[root])
-
-                elif((self.array[left] in self.result['postorder'] and self.array[right] in self.result['postorder']) \
-                    or (self.array[left] in self.result['postorder'] and self.array[right] == 0) \
-                    or (self.array[right] in self.result['postorder'] and self.array[left] == 0)):
-
-
-                    print('Executing ace in the hole')
-                    self.result['postorder'].append(self.array[root])
+                    
+                print('left :', left)
+                print('right: ', right)
 
                 if(self.array[left] != 0):
-                
-                    self.stack.append(left)
-                    print('This is stack: ',self.stack)
+                    print('Current element: ',self.array[left])
                     self.postorder(left)
+                #else:
+                    #self.result['postorder'].append(self.array[root])
 
-                if(self.array[right] != 0):
-                    
-                    print('Current root is: ', root)
-                    self.stack.append(right)
-                    print(self.stack)
+                if(self.array[right] !=0):
+                    print('Current right element: ', self.array[right])
                     self.postorder(right)
+                #else:
+                 #   self.result['postorder'].append(self.array[root])
+
+                if(self.array[root] != 0):
+                    
+                    self.result['postorder'].append(self.array[root])
+                    
+                print('')
 
             except IndexError:
-                
-                self.result['postorder'].append(self.array[root])
-                
+
+                print('------------')
+                print('Left: ', left)
+                print('Right: ', right)
+                print('Root: ', root)
+
         return self.result['postorder']
 
 
