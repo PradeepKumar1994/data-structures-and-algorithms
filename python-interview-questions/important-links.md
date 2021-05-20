@@ -16,8 +16,10 @@
 ### To Do
 
 > 1. First Class Functions
-> 2. CLosures
+> 2. [Closures](https://www.youtube.com/watch?v=swU3c34d2NQ)
 > 3. Decorators
 > 4. Polymorphism
 > 5. Encapsulation
 > 6. Inheritance
+> 7. Static and CLass Methods
+> 8. Special Methods
