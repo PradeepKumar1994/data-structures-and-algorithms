@@ -1,6 +1,4 @@
 
-#In Python you can return a function as an object - this is closure
-
 def my_outer_function(message):
 
     def inner_function():
