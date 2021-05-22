@@ -1,0 +1,1 @@
+def square(x):    return x * xdef function(square, list_):    list_new = []    for i in list_:        i = square(i)        list_new.append(i)    return list_newsquare_values = function(square, [1,2,3,4,5,6])print('---This is executed from first class function---')print(square_values)
