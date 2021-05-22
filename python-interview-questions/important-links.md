@@ -10,7 +10,7 @@
 ### Python Topics
 
  1. [First Class Functions]()
- > - [First-Class Function](https://www.youtube.com/watch?v=kr0mpwqttM0&list=RDCMUCCezIgC97PvUuR4_gbFUs5g&start_radio=1&t=75s)
+ > - [Corey Schafer](https://www.youtube.com/watch?v=kr0mpwqttM0&list=RDCMUCCezIgC97PvUuR4_gbFUs5g&start_radio=1&t=75s)
 
  2. [Closures](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/closure.py)
  > - [Corey Schafer](https://www.youtube.com/watch?v=swU3c34d2NQ)
