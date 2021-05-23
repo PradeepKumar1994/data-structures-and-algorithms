@@ -1,3 +1,5 @@
+#A closure is a function which remember the scope of a variable which is defined -
+# outside the scope of it.
 
 def my_outer_function(message):
 
