@@ -1,0 +1,1 @@
+def decorated_function(original_function = None):    def wrapper_function():        print("Function name is: {}".format(original_function.__name__))        return original_function()    print('--------------')    return wrapper_function@decorated_functiondef original_function():    print('Trying to learn decorators')original_function() 
