@@ -21,7 +21,7 @@
 
 ### To Do
 
-> 1. First Class Functions
+> 1. ~~First Class Functions~~
 > 2. ~~Closures~~
 > 3. Decorators
 > 4. Polymorphism
