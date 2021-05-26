@@ -13,9 +13,12 @@
 
  2. [Closures](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/closure.py)
 
- 3. Decorators
+ 3. ** Decorators
 
- 4. [Inheritance]() | [Stack Overflow]()
+ 4. [Inheritance](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/inheritance/inheritance.py)
+
+ 7. [Static and Class Methods](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/inheritance/inheritance.py)
+
 
 ### To Do
 
@@ -24,8 +27,8 @@
 > 3. Decorators
 > 4. Polymorphism
 > 5. Encapsulation
-> 6. Inheritance
-> 7. Static and CLass Methods
+> 6. ~~Inheritance~~
+> 7. ~~Static and Class Methods~~
 > 8. Special Methods
 
 
