@@ -21,7 +21,7 @@
 
  4. [Inheritance]()
  > - [Stack Overflow]()
- > - [Corey Schafer]()
+ > - [Corey Schafer](https://www.youtube.com/watch?v=RSl87lqOXDE)
 
 ### To Do
 
