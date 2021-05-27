@@ -17,19 +17,7 @@
 
  4. [Inheritance](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/inheritance/inheritance.py)
 
- 7. [Static and Class Methods](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/inheritance/inheritance.py)
-
-
-### To Do
-
-> 1. ~~First Class Functions~~
-> 2. ~~Closures~~
-> 3. Decorators
-> 4. Polymorphism
-> 5. Encapsulation
-> 6. ~~Inheritance~~
-> 7. ~~Static and Class Methods~~
-> 8. Special Methods
+ 5. [Static and Class Methods](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/inheritance/inheritance.py)
 
 
 ### Resources
