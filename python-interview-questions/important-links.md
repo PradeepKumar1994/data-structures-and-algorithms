@@ -23,3 +23,4 @@
 ### Resources
 
 - [Decorators](https://stackoverflow.com/questions/739654/how-to-make-function-decorators-and-chain-them-together/1594484#1594484)
+- [Yield](https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do)
