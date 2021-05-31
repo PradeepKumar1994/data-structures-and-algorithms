@@ -33,6 +33,7 @@ class Binarytree:
 
                 return 'Empty Tree'
 
+
         if(len(self.stack) != 0):
 
             left = root + root + 1
@@ -42,6 +43,10 @@ class Binarytree:
             try:
                 
                 print('left root value: ', left)
+
+                if(self.array[root] not in self.result['preorder']):
+
+                    self.result['preorder'].append(self.array[root])
                 
                 if(self.array[left]!= 0):
                     self.stack.append(left)
@@ -49,7 +54,7 @@ class Binarytree:
                     self.preorder(left)
 
                 print('right root value: ', right)
-
+  
                 if(self.array[right] != 0):
 
                     self.stack.append(right)
@@ -61,8 +66,6 @@ class Binarytree:
             except IndexError:
 
                 print('root exception value: ', root)
-
-        print('Stack: ',self.stack)
 
         self.stack = []
 
@@ -91,26 +94,24 @@ class Binarytree:
 
             try:
                     
-                print('left :', left)
-                print('right: ', right)
-
                 if(self.array[left] != 0):
                     print('Current element: ',self.array[left])
+                    self.stack.append(self.array[left])
                     self.postorder(left)
-                #else:
-                    #self.result['postorder'].append(self.array[root])
+                else:
+                    self.result['postorder'].append(self.stack[-1])
+                    self.stack.pop()
 
                 if(self.array[right] !=0):
                     print('Current right element: ', self.array[right])
                     self.postorder(right)
-                #else:
-                 #   self.result['postorder'].append(self.array[root])
+                else:
+                 self.result['postorder'].append(self.array[root])
 
                 if(self.array[root] != 0):
                     
                     self.result['postorder'].append(self.array[root])
                     
-                print('')
 
             except IndexError:
 
@@ -185,13 +186,23 @@ binarytree.insert(33)
 binarytree.insert(2)
 binarytree.insert(25)
 binarytree.insert(6)
-binarytree.print_()
+#binarytree.print_()
 
 #result = binarytree.preorder()
 #print(result)
 
-print('--------POST ORDER TRAVERSAL -----------')
+
+
+
 
 result = binarytree.postorder(root = 0)
+print('-------- POST-ORDER TRAVERSAL -----------')
 print(result)
 #binarytree.inorder_preprocess()
+
+result = binarytree.preorder(root = 0)
+print('-------- PRE-ORDER TRAVERSAL -----------')
+print(result)
+
+print('---------------')
+print(binarytree.array)
