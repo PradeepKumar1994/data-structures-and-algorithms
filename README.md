@@ -11,6 +11,7 @@
 - [Linked Lists](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/linked-list/linked-list.c)
 - [Hash Table](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/hashtable)
 - [Binary Search Tree]()
+- [Binary Heaps]()
 - [Python Interview Questions](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/important-links.md)
 
 
