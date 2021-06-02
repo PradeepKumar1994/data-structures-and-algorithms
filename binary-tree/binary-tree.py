@@ -67,7 +67,7 @@ class Binarytree:
 
                 print('root exception value: ', root)
 
-        self.stack = []
+        self.stack = [0]
 
         return self.result['preorder']
 
@@ -121,6 +121,63 @@ class Binarytree:
                 print('Root: ', root)
 
         return self.result['postorder']
+
+    def inorder(self, root = None):
+
+        if(root == None):
+
+            root = 0
+
+            if(self.array[root] != 0):
+                
+                self.result['inorder'].append(self.array[root])
+
+                print(self.result['inorder'])
+
+            elif(self.array[root] == 0):
+
+                return 'Empty Tree'
+
+
+        if(len(self.stack) != 0):
+
+            left = root + root + 1
+
+            right = root + root + 2
+
+            try:
+                
+                print('left root value: ', left)
+
+
+                if(self.array[left]!= 0):
+                    self.stack.append(left)
+                    self.inorder(left)
+                    self.result['inorder'].append(self.array[left])
+                    print('aftermath')
+
+                print('right root value: ', right)
+
+                if(self.array[root] not in self.result['inorder']):
+                    self.result['inorder'].append(self.array[root])
+                    print('aftermath')
+                
+  
+                if(self.array[right] != 0):
+
+                    self.stack.append(right)
+                    self.inorder(right)
+                    self.result['inorder'].append(self.array[right])
+                    print('aftermath')
+
+            except IndexError:
+
+                print('root exception value: ', root)
+
+        #self.stack = []
+
+        return self.result['inorder']
+
 
 
     def traverse(self, value, root = None):
@@ -204,5 +261,9 @@ result = binarytree.preorder(root = 0)
 print('-------- PRE-ORDER TRAVERSAL -----------')
 print(result)
 
-print('---------------')
+print('------- IN-ORDER TRAVERSAL--------')
+result = binarytree.inorder(root = 0)
+print(result)
+
+print('-------')
 print(binarytree.array)
