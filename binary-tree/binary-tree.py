@@ -150,29 +150,39 @@ class Binarytree:
                 print('left root value: ', left)
 
 
-                if(self.array[left]!= 0):
+                if((self.array[left]!= 0)  and (self.array[left] not in self.result['inorder'])):
+
+                    print('CONDITION: ',(self.array[left]!= 0)  and (self.array[left] not in self.result['inorder']))
+    
+                    print('BEFORE',self.result['inorder'])
                     self.stack.append(left)
                     self.inorder(left)
                     self.result['inorder'].append(self.array[left])
-                    print('aftermath')
+                    print('AFTER',self.result['inorder'])
 
                 print('right root value: ', right)
 
                 if(self.array[root] not in self.result['inorder']):
+
+                    print('CONDITION: ',self.array[root] not in self.result['inorder'])
+                    print('BEFORE', self.result['inorder'])
                     self.result['inorder'].append(self.array[root])
-                    print('aftermath')
+                    print('AFTER',self.result['inorder'])
                 
   
-                if(self.array[right] != 0):
+                if((self.array[right] != 0) and (self.array[right] not in self.result['inorder'])):
 
+                    print('CONDITION: ',(self.array[right] != 0) and (self.array[right] not in self.result['inorder']))
                     self.stack.append(right)
                     self.inorder(right)
                     self.result['inorder'].append(self.array[right])
-                    print('aftermath')
+                    print(self.result['inorder'])
 
             except IndexError:
 
-                print('root exception value: ', root)
+                print()
+
+        print(self.result['inorder'])
 
         #self.stack = []
 
