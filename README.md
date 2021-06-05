@@ -12,7 +12,7 @@
 - [Hash Table](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/hashtable)
 - [Binary Search Tree]()
 - [Binary Heaps]()
-- [Python Important Concepts](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/important-links.md)
+- [Python Concepts](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/important-links.md)
 
 
 ## To Learn
