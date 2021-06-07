@@ -18,7 +18,7 @@
 ## To Learn
 My list to learn under queue:
 
-- [ ] Time Complexity
-- [ ] Space Complexity
+- [x] Time Complexity
+- [x] Space Complexity
 
 
