@@ -12,10 +12,10 @@
 - [Hash Table](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/hashtable)
 - [Binary Search Tree]()
 - [Binary Heaps]()
-- [Python Interview Questions](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/important-links.md)
+- [Python Concepts](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/important-links.md)
 
 
-## To Learn
+## Master 
 My list to learn under queue:
 
 - [ ] Time Complexity
