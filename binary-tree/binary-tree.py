@@ -132,7 +132,7 @@ class Binarytree:
                 
                 self.result['inorder'].append(self.array[root])
 
-                print(self.result['inorder'])
+                print('This should only execute if root = None',self.result['inorder'])
 
             elif(self.array[root] == 0):
 
@@ -147,44 +147,46 @@ class Binarytree:
 
             try:
                 
-                print('left root value: ', left)
+                if((self.array[left]!= 0)):
 
+                    if(self.array[left] not in self.result['inorder']):
 
-                if((self.array[left]!= 0)  and (self.array[left] not in self.result['inorder'])):
+                        self.stack.append(left)
+                        self.inorder(left)
+                        print('Left code block')
+                        print('Element to be addded: ', self.array[left])
+                        print('Result: ', self.result['inorder'])
+                        self.result['inorder'].append(self.array[left])
+                        print('Element Added: ', self.result['inorder'])
+                        print()
 
-                    print('CONDITION: ',(self.array[left]!= 0)  and (self.array[left] not in self.result['inorder']))
-    
-                    print('BEFORE',self.result['inorder'])
-                    self.stack.append(left)
-                    self.inorder(left)
-                    self.result['inorder'].append(self.array[left])
-                    print('AFTER',self.result['inorder'])
+                elif(self.array[root] not in self.result['inorder']):
 
-                print('right root value: ', right)
-
-                if(self.array[root] not in self.result['inorder']):
-
-                    print('CONDITION: ',self.array[root] not in self.result['inorder'])
-                    print('BEFORE', self.result['inorder'])
+                    print('Root code block')
+                    print('Element to be added', self.array[root])
+                    print('Result', self.result['inorder'])
                     self.result['inorder'].append(self.array[root])
-                    print('AFTER',self.result['inorder'])
-                
+                    print('Element added: ',self.result['inorder'])
+                    print()
   
-                if((self.array[right] != 0) and (self.array[right] not in self.result['inorder'])):
+                if(self.array[right] != 0):
 
-                    print('CONDITION: ',(self.array[right] != 0) and (self.array[right] not in self.result['inorder']))
-                    self.stack.append(right)
-                    self.inorder(right)
-                    self.result['inorder'].append(self.array[right])
-                    print(self.result['inorder'])
+                    if(self.array[right] not in self.result['inorder']):
+
+                        self.stack.append(right)
+                        self.inorder(right)
+                        print('Right code block')
+                        print('Element to be added',self.array[right])
+                        print('Result', self.result['inorder'])
+                        self.result['inorder'].append(self.array[right])
+                        print('Element Added: ',self.result['inorder'])
+                        print()
 
             except IndexError:
 
                 print()
 
-        print(self.result['inorder'])
-
-        #self.stack = []
+        print('All function executed: ',self.result['inorder'])
 
         return self.result['inorder']
 
