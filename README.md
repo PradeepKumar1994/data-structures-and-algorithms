@@ -15,10 +15,10 @@
 - [Python Concepts](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/important-links.md)
 
 
-## To Learn
+## Master 
 My list to learn under queue:
 
-- [x] Time Complexity
-- [x] Space Complexity
+- [ ] Time Complexity
+- [ ] Space Complexity
 
 
