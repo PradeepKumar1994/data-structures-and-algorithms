@@ -190,8 +190,6 @@ class Binarytree:
 
         return self.result['inorder']
 
-
-
     def traverse(self, value, root = None):
 
         if(root == None):
@@ -220,7 +218,6 @@ class Binarytree:
 
         return "This shouldn't be returned"
 
-
     def insert(self, value):
 
         location = self.traverse(value)
@@ -237,7 +234,29 @@ class Binarytree:
 
         print(self.array)
 
+    def search_(self, search_val, location=0):
 
+        if(location >= len(self.array)):
+        
+            return "Element not found"
+
+        elif(search_val == self.array[location]):
+    
+            str_ = "Found at: ", + location
+
+            return str_
+
+        else:
+
+            if(search_val < self.array[location]):
+
+                location = location + location + 1
+
+                return self.search_(search_val, location)
+            
+            location + location + 2
+    
+            return self.search_(search_val, location)
         
 
 
@@ -277,5 +296,5 @@ print('------- IN-ORDER TRAVERSAL--------')
 result = binarytree.inorder(root = 0)
 print(result)
 
-print('-------')
-print(binarytree.array)
+print('---- Binary Tree Search ----')
+print(binarytree.search_(2))
