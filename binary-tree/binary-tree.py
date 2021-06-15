@@ -259,6 +259,48 @@ class Binarytree:
             return self.search_(search_val, location)
         
 
+    def search_linear(self, search_element):
+
+        str_ = "Element not found"
+
+        for i in self.array:
+
+            if(search_element == i):
+
+                str_ = "Element found {}".format(self.array.index(i))
+
+                return str_
+
+        return str_
+
+    
+    def binary_tree_search(self, search_element, root = 0):
+
+        if(root >= len(self.array)):
+
+            print('Element not found')
+
+        elif(self.array[root] == search_element):
+
+            print('Element Found!')
+
+            return
+
+        elif(search_element < self.array[root]):
+
+            left = root + root + 1
+
+            self.binary_tree_search(search_element, left)
+
+            return
+
+        else:
+
+            right = root + root + 2
+
+            self.binary_tree_search(search_element, right)
+
+        return "This should not happen"
 
 
 
@@ -275,10 +317,6 @@ binarytree.insert(2)
 binarytree.insert(25)
 binarytree.insert(6)
 #binarytree.print_()
-
-#result = binarytree.preorder()
-#print(result)
-
 
 
 
@@ -298,3 +336,16 @@ print(result)
 
 print('---- Binary Tree Search ----')
 print(binarytree.search_(2))
+
+
+
+result = binarytree.search_linear(7)
+print(result)
+
+
+print('-----------------------------')
+
+result = binarytree.binary_tree_search(6)
+print(result)
+
+
