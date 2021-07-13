@@ -1,4 +1,6 @@
 
+from perm_copy import permutation
+
 #CHAPTER ARRAYS - 
 # INTERVIEW QUESTIONS 1.1
 
@@ -6,35 +8,30 @@ class permutations_two_string():
 
     def __init__(self,str1, str2):
 
-        self.array1 = []
-
-        self.array2 = []
+        self.dict_ = {'str1': [], 'str2': []}
 
         self.str1 = str1
 
         self.str2 = str2
 
-    def permutation(self):
+    def permutationx(self):
 
-        for i in range(len(self.str1)):
+        self.dict_['str1'] = permutation(self.str1)
+        self.dict_['str2'] = permutation(self.str2)
 
-            for j in range(len(self.str2)):
+        for i in self.dict_['str1']:
 
-                self.array1.append(self.str1[i] + self.str1[i+1:])
-                print('-------------------------------------------------------------------')
-                print(self.array1)
-                print('-------------------------------------------------------------------')
+            for j in self.dict_['str2']:
 
-                self.array2.append(self.str2[j] + self.str2[j+1:])
-                print(self.array2)
+                if(i == j):
 
-                if(self.array1[-1] == self.array2[-1]):
-
-                    return self.array1[-1], self.array2[-1]
-
-            
-pts = permutations_two_string("Pradeep", "Kumar")
-
-pts.permutation()
+                    return "match found"
 
 
+        return "No match found"
+
+
+
+pts = permutations_two_string('str', 'rts')
+
+pts.permutationx()

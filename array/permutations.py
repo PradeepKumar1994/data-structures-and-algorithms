@@ -52,7 +52,7 @@ class Permutations():
 
 
 
-perm = Permutations('abc')
+perm = Permutations('abcd')
 
 print(perm.permutations_words())
 
