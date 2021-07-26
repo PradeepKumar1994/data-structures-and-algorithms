@@ -7,13 +7,22 @@ class Question4():
 
     def palindrome(self, string_):
 
+        if(len(string_) != len(self.str_)):
+
+            return False
+
         print('Palindrome check running..')
 
         count = 0
         string_rev = string_[::-1]
+
+        print('Reversed string: ', string_rev)
+        print('Original string: ', string_)
  
         if(len(self.str_) != len(string_rev)):
 
+            print('This executed')
+    
             return False 
 
         else:
@@ -32,7 +41,13 @@ class Question4():
 
         l = []
 
-        for i in range(len(str_)):
+        sub_str = ''
+
+        if(len(str_) == 0):
+
+            print('Empty string')
+
+        for i in range(len(str_)-1):
 
             temp = str_[i]
 
@@ -40,22 +55,29 @@ class Question4():
 
             result_permutate = self.permutate(sub_str)
 
-            for i in result_permutate:
+            if(not len(result_permutate) < len(self.str_)-2):
 
-                l.append(m+i)
+                for i in result_permutate:
+            
+                    l.append(temp+i)
 
-                print(l[-1])
+                    if(self.palindrome(l[-1])):
 
-                if(self.palindrome(l[-1])):
+                        print("Palindrome")
 
-                    print("Palindrome")
+                        return l
 
-                    return True
-
-        return l
+        return sub_str
 
 
+    def run(self):
 
-ques = Question4('ENET')
+        result = self.permutate(self.str_)
 
-ques.permutate('ENET')
+        return result
+
+print('----------------')
+
+ques = Question4('tenet')
+
+ques.run()
