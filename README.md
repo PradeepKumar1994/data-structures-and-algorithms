@@ -10,7 +10,7 @@
 - [Dynamic Array](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/dynamic-array)
 - [Linked Lists](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/linked-list/linked-list.c)
 - [Hash Table](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/hashtable)
-- [Binary Search Tree]()
+- [Binary Search Tree](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/binary-search-tree)
 - [Binary Heaps](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/binary-tree)
 - [Graphs]()
 - [Python Concepts](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/important-links.md)
