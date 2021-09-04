@@ -1,18 +1,18 @@
 class Node():
 
-	def __init__(self, data):
-		self.left = None
-		self.data = data
-		self.right = None
+    def __init__(self, data):
+        self.left = None
+        self.data = data
+        self.right = None
 
 class BinarySearchTree():
 
-	def __init__(self):
+    def __init__(self):
 
         self.node = None
         self.root = None
 
-    def insertion(self):
+    def insertion(self, data):
 
         if(not self.root):
 
@@ -20,7 +20,6 @@ class BinarySearchTree():
             return 
 
         temp_root = self.root
-        while(temp_root):
 
         while(temp_root != None):
             if(data > temp_root.data):
@@ -33,7 +32,7 @@ class BinarySearchTree():
             else:
                 if(temp_root.left == None):
                     self.node = Node(data)
-                    temp_root.left = self.data
+                    temp_root.left = self.node
                     return 
                 else:
                     temp_root = temp_root.left
