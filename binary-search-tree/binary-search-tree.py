@@ -49,17 +49,20 @@ class BinarySearchTree():
             print(root.data)
             self.traversal(root.right)
 
-    def Inordersuccessor(root):
-
+    def Inordersuccessor(self, current):
+        
         while(current):
             if(current.left == None):
-                if(current.right):
-                    return current.data, current.right
+                tmp = current
+                current.left = None
+                if(current.right is not None):
+                    return tmp.data, current.right
                 else:
-                    return current.data, None
+                    return tmp.data, None
+            
+            current = current.left
 
-            current = current
-
+        return None
 
     def deletion(self, data):
 
@@ -70,7 +73,7 @@ class BinarySearchTree():
         current, previous = self.root, self.root
 
         while(current):
-
+            
             if(data == current.data):
                 #case 1: no children
                 if(not current.left and not current.right):
@@ -84,30 +87,36 @@ class BinarySearchTree():
                             previous.right = None
                             return None
                 #case 2: two children
-                elif(current.left and current.right):
+                elif(current.left is not None and current.right is not None):
+                    print('Two children case')
                     temp = current.data
-                    current.data, delete_node = Inordersuccesor(current.right)
-                    print("Data to be deleted {} replaced with {}".format(temp, current.data))
-                    if(delete_node):
-                        previous.left = delete_node
+                    current.data, right_node = self.Inordersuccessor(current.right)
+                    print("Data to be deleted {} replaced with {} ".format(temp, current.data))
+                    if(right_node):
+                        print('right node', right_node)
+                        previous.left = right_node
                         return None
 
                 #case 3: one child
                 else:
+                    #This logic is flawed
                     if(not current.left):
+
                         if(data < previous.data):
-                            previous.left = None
+                            
+                            previous.left = current.right
                             return None
                         else:
-                            previous.right
+
+                            previous.right = current.right
                             return None
 
                     else:
                         if(data < previous.data):
-                            previous.left = None
+                            previous.left = current.left
                             return None
                         else:
-                            previous.right = None
+                            previous.right = current.left
                             return None
             else:
                 previous = current
@@ -132,6 +141,7 @@ print(bst.deletion(1))
 print(bst.deletion(20))
 print(bst.deletion(30))
 print(bst.deletion(50))
+
 
 bst.traversal(root)
 
