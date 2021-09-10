@@ -4,6 +4,7 @@ class Node():
         self.data = data
         self.left = None
         self.right = None
+        self.parent = None
 
 class BinarySearchTree():
     def __init__(self):
@@ -20,12 +21,14 @@ class BinarySearchTree():
         if(data < root.data):
             if(root.left == None):
                 root.left = Node(data)
+                root.left.parent = root
                 return None
             else:
                 return self._insertion(root.left, data)
         elif(data > root.data):
             if(root.right == None):
                 root.right = Node(data)
+                root.right.parent = root
                 return None
             else:
                 return self._insertion(root.right, data)
@@ -48,25 +51,27 @@ class BinarySearchTree():
         if(self.root == None):
             return None
         else:
-            self._find(self.root, data)
+            return self._find(self.root, data)
     
     def _find(self, current_node, data):
         if(current_node.data == data):
             return current_node
-        elif(data < current_node and current_node.left != None):
+        elif(data < current_node.data and current_node.left != None):
             return current_node.left
-        elif(data > current_node and current_node,right != None):
+        elif(data > current_node.data and current_node,right != None):
             return current_node.right
-        else:
-            return None
+        return None
 
     def delete(self, data):
         if(self.root == None):
             return "Tree empty"
         else:
-            return self._delete_node(self.find(self.root, data), data)
+            target = self.find(data)
+            if(target):
+                return self._delete_node(target, data)
+        return "Element not found"
 
-    def _delete_node(self, current_node, data):
+    def _delete_node(self, target_node, data):
         
         def number_children(root):
             if(root.left != None and root.right != None):
@@ -77,15 +82,35 @@ class BinarySearchTree():
                 return 0
 
         def inorder_successor(current_node):
-            if(curren_node != None):
+            if(current_node != None):
                 current_node = current_node.left
             return current_node
 
-        num_children = number_children(current_node)
-        target_node = self.find(data)
+        num_children = number_children(target_node)
 
         if(num_children == 0):
-            pass
+            if(target_node.parent.left == target_node):
+                target_node.parent.left = None
+            else:
+                target_node.parent.right = None
+
+        elif(num_children == 1):
+            if(target_node.left): #equal node exists
+                child_node = target_node.left
+            else:
+                child_node = target_node.right
+            
+            if(target_node.parent.left == node):
+                target_node.parent.left = child_node
+            else:
+                target_node.parent.right = child_node
+
+        else:
+            successor_node = inorder_successor(target_node.right)
+            target_node.data = successor_node.data
+            return self.deletion(successor, successor.data)
+                
+
 
 bst = BinarySearchTree()
 bst.insertion(2)
@@ -93,5 +118,12 @@ bst.insertion(5)
 bst.insertion(10)
 bst.insertion(7)
 bst.insertion(1)
+bst.insertion(12)
+bst.insertion(21)
+bst.insertion(33)
 
+bst.traverse()
+
+bst.delete(1)
+print()
 bst.traverse()
