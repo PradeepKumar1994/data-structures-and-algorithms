@@ -1,6 +1,11 @@
 # Logic is obtained from
 #https://www.youtube.com/watch?v=Zaf8EOVa72I&t=0s
-
+#Runtime
+#Time complexity
+# Insertion: O(n)
+# Deletion: O(n)
+#Space complexity
+# O(n)
 
 class Node():
     def __init__(self, data):
