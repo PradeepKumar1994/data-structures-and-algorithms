@@ -108,7 +108,7 @@ class BinarySearchTree():
             else:
                 child_node = target_node.right
             
-            if(target_node.parent.left == node):
+            if(target_node.parent.left == target_node):
                 target_node.parent.left = child_node
             else:
                 target_node.parent.right = child_node
