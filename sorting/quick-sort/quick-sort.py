@@ -30,17 +30,19 @@ class QuickSort():
                 end = end - 1
 
             if(start < end):
+                
                 temp = self.arr[start]
                 self.arr[start] = self.arr[end]
                 self.arr[end] = temp
+                print('----->',self.arr)
         print('before: ',self.arr)
-        self.arr[lower], self.arr[upper] = self.swap(self.arr[lower], self.arr[end])
-        print(self.arr)
+        self.arr[lower], self.arr[end] = self.swap(self.arr[lower], self.arr[end])
+        print('After: ',self.arr)
+        print('lower: {} upper: {}, end: {}'.format(lower, upper, end))
+        print()
         return end
 
     def quicksort(self, lower, upper):
-
-        print('lower: {} upper: {}'.format(lower, upper))
 
         if(lower < upper):
 
@@ -50,6 +52,9 @@ class QuickSort():
             print(self.arr)
 
 
-arr = [7, 6, 10, 5, 9, 2, 1, 15, 7]
+#arr = [7, 6, 10, 5, 9, 2, 1, 15, 7]
+
+arr = [1,2,3,4,5,6,7,8,9,10]
+
 qq = QuickSort(arr)
 qq.quicksort(0, len(arr)-1)
