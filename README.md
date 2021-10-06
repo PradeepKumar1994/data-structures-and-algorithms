@@ -19,6 +19,7 @@
   - [Binary Search]()
   - [Merge Sort]()
   - [Heap Sort]()
+  - [Selection Sort]()
 
 
 ## Master 
