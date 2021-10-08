@@ -13,11 +13,6 @@ def permutate(string, substring):
         left = string[0:i]
         right = string[i+1:]
         res = left+right
-        print('temp: ',temp)
-
-        print('substring + temp: ',substring+temp)
-        print('this is res: ',res)
-        print()
         permutate(res, substring+temp)
 
 permutate('abc', '')
