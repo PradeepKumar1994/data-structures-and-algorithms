@@ -1,5 +1,4 @@
 
-
 def permutate(string, substring):
 
     if(not len(string)):
