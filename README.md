@@ -15,6 +15,7 @@
 - [Graphs](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/graph)
 - [Tries](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/tries)
 - [Python Concepts](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/important-links.md)
+- [Recursion](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/recursion)
 - [Sorting Techniques](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/sorting)
   - [Binary Search]()
   - [Merge Sort]()
@@ -33,3 +34,4 @@ My list to learn under queue:
 
 - [ ] StringBuilder
 - [ ] ArrayList
+- [ ] Binary Search on a String
