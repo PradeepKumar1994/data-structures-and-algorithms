@@ -34,3 +34,4 @@ My list to learn under queue:
 
 - [ ] StringBuilder
 - [ ] ArrayList
+- [ ] Binary Search on a String
