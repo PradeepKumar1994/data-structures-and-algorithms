@@ -35,3 +35,5 @@ My list to learn under queue:
 - [ ] StringBuilder
 - [ ] ArrayList
 - [ ] Binary Search on a String
+- [ ] Towers of Hanoi
+- [ ] N Queens
