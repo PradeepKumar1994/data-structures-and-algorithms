@@ -1,7 +1,7 @@
 
 '''
-Time complexity: O(n^2)
-Space complexity: 
+Time complexity: O(V^2)
+Space complexity: O(V)
 '''
 
 def depth(row, matrix, stack):
@@ -10,7 +10,7 @@ def depth(row, matrix, stack):
             stack.append(col)
     return stack
 
-def DFS(matrix):
+def BFS(matrix):
     stack = []
     row = len(matrix)
     if(row > 0):
@@ -23,5 +23,4 @@ def DFS(matrix):
     return None
 
 matrix = [[0,1,0,1,0,0,0],[1,0,1,1,0,1,1],[0,1,0,1,1,1,0],[1,1,1,0,1,0,0],[0,0,1,1,0,0,1,],[0,1,1,0,0,0,0],[0,1,0,0,1,0,0]]
-
-print(DFS(matrix))
+print(BFS(matrix))
