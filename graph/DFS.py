@@ -1,29 +1,37 @@
 
 '''
-Time complexity: 
-Space complexity: 
+Time complexity: O(V^2)
+Space complexity: O(V)
 '''
 
-def depth(row, matrix, stack):
-    for col in range(len(matrix[row])):
-        if(matrix[row][col] == 1 and col not in stack):
-            stack.append(col)
-        else:
-            print(col, matrix[row][col])
+def DFS(matrix):
+
+    row = len(matrix)
+    cols = len(matrix[0]) 
+    if(row < 1):
+        print(row)
+        return None
+    stack = [0]
+    for i in range(row):
+        stack = depth(matrix, i, stack)
+        if(len(stack) == cols):
+            return stack
+
     return stack
 
-def DFS(matrix):
-    stack = []
-    row = len(matrix)
-    if(row > 0):
-        stack.append(0)
-    else:
-        return None
-    for i in range(row):
-        stack = depth(stack[i], matrix, stack)
-        print(stack)
-    return None
+def depth(matrix, row, stack):
+    
+    if(len(stack) == len(matrix[row])):
+        return stack
+
+    for i in range(len(matrix[row])):
+        if(matrix[row][i] > 0 and i not in stack):
+            stack.append(i)
+            return depth(matrix, i, stack)
+
+    return stack
+
 
 matrix = [[0,1,0,1,0,0,0],[1,0,1,1,0,1,1],[0,1,0,1,1,1,0],[1,1,1,0,1,0,0],[0,0,1,1,0,0,1,],[0,1,1,0,0,0,0],[0,1,0,0,1,0,0]]
-
 print(DFS(matrix))
+print(len(matrix[0]))
