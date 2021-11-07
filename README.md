@@ -13,7 +13,7 @@
 - [Binary Search Tree](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/binary-search-tree)
 - [Binary Heaps](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/binary-tree)
 - [Graphs](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/graph)
-- [Trees]()
+- [Trees](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/trees)
 - [Tries](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/tries)
 - [Python Concepts](https://github.com/PradeepKumar1994/data-structures-and-algorithms/blob/main/python-interview-questions/important-links.md)
 - [Recursion](https://github.com/PradeepKumar1994/data-structures-and-algorithms/tree/main/recursion)
