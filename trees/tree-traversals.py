@@ -15,17 +15,22 @@ class Linkedlist():
         self.root = None
         self.node = None
         self.count = 0
+        self.memory = []
 
     def insert(self, data):
         if(self.root == None):
             self.node = Node(data)
             self.root = self.node
+            self.memory.append(self.root)
             print('Data added: ', self.root.data)
         else:
             return self._insert([self.root], data)
 
+    def print_tree(self):
+        for i in self.memory:
+            print(i)
+        
     def _insert(self, queue, data):
-
         if(len(queue) <= 0):
             print('Something went wrong')
             return None
@@ -33,6 +38,7 @@ class Linkedlist():
         if(queue[0].left == None):
             temp = Node(data)
             queue[0].left = temp
+            self.memory.append(temp)
             self.node = temp
             print('Data added: ', data)
             return None
@@ -40,6 +46,7 @@ class Linkedlist():
         elif(queue[0].right == None):
             temp = Node(data)
             queue[0].right = temp
+            self.memory.append(temp)
             self.node = temp
             print('Data added: ', data)
             return None
@@ -54,12 +61,12 @@ class Linkedlist():
         return self._inorder(self.root)
 
     def _inorder(self, root):
-        if(root != None):
-            
+        if(root):
             self._inorder(root.left)
-            print(self._inorder(root.data))
+            print(root.data)
             self._inorder(root.right)
-        
+
+ 
 ll = Linkedlist()
 ll.insert(1)
 ll.insert(2)
