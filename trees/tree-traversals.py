@@ -76,7 +76,16 @@ class Linkedlist():
             self._preorder(root.left)
             self._preorder(root.right)
 
+    def post_order(self):
+        print('--- POST ORDER ---')
+        return self._post_order(self.root)
 
+    def _post_order(self, root):
+        if(root!=None):
+            self._post_order(root.left)
+            self._post_order(root.right)
+            print(root.data)
+ 
 ll = Linkedlist()
 ll.insert(1)
 ll.insert(2)
