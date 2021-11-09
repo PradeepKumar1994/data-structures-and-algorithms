@@ -66,7 +66,17 @@ class Linkedlist():
             print(root.data)
             self._inorder(root.right)
 
- 
+    def preorder(self):
+        print('---- PRE ORDER ----')
+        return self._preorder(self.root)
+
+    def _preorder(self, root):
+        if(root != None):
+            print(root.data)
+            self._preorder(root.left)
+            self._preorder(root.right)
+
+
 ll = Linkedlist()
 ll.insert(1)
 ll.insert(2)
@@ -80,3 +90,5 @@ ll.insert(9)
 ll.insert(10)
 ll.insert(11)
 ll.inorder()
+ll.preorder()
+ll.post_order()
