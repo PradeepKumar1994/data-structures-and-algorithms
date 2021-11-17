@@ -1,3 +1,8 @@
+'''
+E -> Nodes / number of elements
+Time complexity: O(E)
+Space complexity: O(E)
+'''
 
 class Node():
     def __init__(self, data):
