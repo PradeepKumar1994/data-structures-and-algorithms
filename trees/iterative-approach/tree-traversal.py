@@ -50,20 +50,6 @@ class BinaryTree():
                 del queue[0]
                 self._insert(queue, data)
 
-    def add(self, stack):
-
-        if(len(stack)>0):
-            root = stack.pop()
-            if(root.right!=None):
-                stack.append(root.right)
-
-            stack.append(root)
-
-            if(root.left!=None):
-                stack.append(root.left)
-
-        return stack
-
     def inorder_traversal(self):
         return self._inorder_traversal(self.root)
 
