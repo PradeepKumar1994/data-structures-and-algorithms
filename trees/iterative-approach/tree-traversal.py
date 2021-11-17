@@ -48,7 +48,7 @@ class BinaryTree():
     def add(self, stack):
 
         if(len(stack)>0):
-            root = stack[-1]
+            root = stack.pop()
             if(root.right!=None):
                 stack.append(root.right)
 
@@ -62,30 +62,39 @@ class BinaryTree():
     def inorder_traversal(self):
         return self._inorder_traversal(self.root)
 
+    def print_data(self, data):
+        return_stack = []
+        for i in data:
+            return_stack.append(i.data)
+
+        return return_stack
+
     def _inorder_traversal(self, root):
         
         stack = [root]
         visited = []
-        while(len(visited)-1 == self.count):
-            while(stack[-1].left!=None and stack[-1].data not in visited):
-                stack = self.add(stack)
-                
-            if(stack[-1].left == None):
-                temp = stack.pop().data
-                visited.append(temp)
+        current = root
 
-            if((stack[-1].left).data in self.visited):
-                temp = stack.pop().data
-                print('Visiting: {}'.format(temp))
-                visited.append(temp)
+        while(current!= None or len(stack) > 0):
+            while(current.left!=None):
+                current = current.left
+                stack.append(current)
 
-            if(stack[-1].right == None):
-                temp = stack.pop().data
-                print('Visiting: {}'.format(temp))
-                visited.append(temp)
+            if(len(stack) > 0):
+                temp_node = stack.pop()
+                visited.append(temp_node.data)
+                print(temp_node.data)
 
-            elif(stack[-1].right != None):
-                stack = self.add(stack[-1])
+            else:
+                return visited
+
+            if(temp_node.right!=None):
+                current = temp_node.right
+                stack.append(current)
+                print(current)
+
+            if(current==None):
+                current = stack[-1]
 
         return visited
 
