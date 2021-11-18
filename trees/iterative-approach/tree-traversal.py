@@ -74,7 +74,6 @@ class BinaryTree():
             if(len(stack) > 0):
                 temp_node = stack.pop()
                 visited.append(temp_node.data)
-                print(temp_node.data)
 
             else:
                 return visited
@@ -82,12 +81,47 @@ class BinaryTree():
             if(temp_node.right!=None):
                 current = temp_node.right
                 stack.append(current)
-                print(current)
 
             if(current==None):
                 current = stack[-1]
 
         return visited
+
+
+    def preorder_traversal(self):
+        return self._preorder_traversal(self.root)
+
+    def _preorder_traversal(self, root):
+    
+        stack = [root]
+        current_node = root
+        visited = []
+
+        while(current_node != None or len(stack)>0):
+            while(current_node.left!=None):
+                visited.append(current_node.data)
+                stack.append(current_node)
+                print('--->',stack[-1].data)
+                if(current_node.left != None):
+                    current_node = current_node.left
+                else:
+                    current_node = None
+
+            if(len(stack)>0):
+                current_node = stack.pop()
+                temp=self.print_data(stack)
+                print(temp)
+            else:
+                return visited
+
+            if(current_node.right!=None):
+                current_node = current_node.right
+                visited.append(current_node.data)
+                stack.append(current_node)
+                print(current_node.data)
+
+        return visited
+
 
 bs = BinaryTree()
 bs.insert(1)
@@ -102,4 +136,5 @@ bs.insert(9)
 bs.insert(10)
 bs.insert(11)
 
-print(bs.inorder_traversal())
+print('Inorder_traversal: ',bs.inorder_traversal())
+print('Preorder_traversal: ',bs.preorder_traversal())
