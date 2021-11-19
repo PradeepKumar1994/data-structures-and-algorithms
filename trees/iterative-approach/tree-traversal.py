@@ -97,28 +97,17 @@ class BinaryTree():
         current_node = root
         visited = []
 
-        while(current_node != None or len(stack)>0):
-            while(current_node.left!=None):
-                visited.append(current_node.data)
-                stack.append(current_node)
-                print('--->',stack[-1].data)
-                if(current_node.left != None):
-                    current_node = current_node.left
-                else:
-                    current_node = None
+        while(len(stack)>0):
+    
+            current_node = stack.pop()
 
-            if(len(stack)>0):
-                current_node = stack.pop()
-                temp=self.print_data(stack)
-                print(temp)
-            else:
-                return visited
+            visited.append(current_node.data)
 
             if(current_node.right!=None):
-                current_node = current_node.right
-                visited.append(current_node.data)
-                stack.append(current_node)
-                print(current_node.data)
+                stack.append(current_node.right)
+
+            if(current_node.left!=None):
+                stack.append(current_node.left)
 
         return visited
 
