@@ -15,21 +15,25 @@ class Graph():
         cols = rows
 
         stack = [0]
-
+        last_row = 0
         for i in range(rows):
-            decision = self._dfs(stack, self.matrix[i], rows)
+            decision = self._dfs(stack, i, last_row, rows)
             if(decision == True):
                 return True
         return False
 
-    def _dfs(self, stack, matrix_row, rows):
+#re-evaluate your logic and consider pop when necessary
+    def _dfs(self, stack, current_row, last_row, rows):
         out = False
-        for col_number in range(rows):
+        print(current_row)
+        matrix_row = self.matrix[current_row]
+        for col_number in range(0, rows):
             if(matrix_row[col_number] == 1):
                 if(col_number not in stack):
                     stack.append(col_number)
-                    self._dfs(stack, self.matrix[col_number], rows)
-                elif(col_number !=0 and col_number in stack):
+                    self._dfs(stack, col_number, current_row, rows)
+                elif(col_number in stack):
+                    print(last_row)
                     stack.append(col_number)
                     out = self._check_loop(stack)
                     return out
@@ -40,13 +44,23 @@ class Graph():
         
         if(len(stack)>1):
             if(self.matrix[stack[-2]][stack[-1]]==1):
-                print(stack)
+                print('-->',stack)
                 return True
-
         return False
 
-
-matrix = [[0,1,0,0,1,0,0],[1,0,1,0,1,0,0],[0,1,0,1,0,1,1],[0,0,1,0,0,0,0],[1,1,0,0,0,0,0],[0,0,1,0,0,0,0]]
+#          0,1,2,3,4,5
+matrix = [[0,1,0,0,1,0],\
+          [0,0,1,0,1,0],\
+          [0,0,0,1,0,1],\
+          [0,0,1,0,0,0],\
+          [1,1,0,0,0,0],\
+          [0,0,1,0,0,0]]
 
 mat = Graph(matrix)
-print(mat.dfs())
+outcome = mat.dfs()
+if(outcome==True):
+    print('Graph has cycle')
+elif(outcome!=None):
+    print('Graph len is not sufficient')
+else:
+    print('Graph has no cycle')
