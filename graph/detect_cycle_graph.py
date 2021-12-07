@@ -24,37 +24,35 @@ class Graph():
 
 #re-evaluate your logic and consider pop when necessary
     def _dfs(self, stack, current_row, last_row, rows):
-        out = False
         print(current_row)
         matrix_row = self.matrix[current_row]
         for col_number in range(0, rows):
             if(matrix_row[col_number] == 1):
                 if(col_number not in stack):
                     stack.append(col_number)
+                    print('-->',stack)
                     self._dfs(stack, col_number, current_row, rows)
-                elif(col_number in stack):
-                    print(last_row)
-                    stack.append(col_number)
-                    out = self._check_loop(stack)
-                    return out
-        
-        return out
-
-    def _check_loop(self, stack):
-        
-        if(len(stack)>1):
-            if(self.matrix[stack[-2]][stack[-1]]==1):
-                print('-->',stack)
-                return True
+                else:
+                    print(stack)
+                    return True
         return False
 
+
 #          0,1,2,3,4,5
-matrix = [[0,1,0,0,1,0],\
-          [0,0,1,0,1,0],\
-          [0,0,0,1,0,1],\
+#matrix = [[0,1,0,0,1,0],\
+#          [1,0,1,0,1,0],\
+#          [0,0,0,1,0,1],\
+#          [0,0,1,0,0,0],\
+#          [1,1,0,0,0,0],\
+#          [0,0,1,0,0,0]]
+
+          #0,1,2,3,4,5
+matrix = [[0,1,0,0,0,0],\
           [0,0,1,0,0,0],\
-          [1,1,0,0,0,0],\
-          [0,0,1,0,0,0]]
+          [0,0,0,1,0,0],\
+          [0,0,0,0,1,0],\
+          [0,0,0,0,0,1],\
+          [1,0,0,0,0,0]]
 
 mat = Graph(matrix)
 outcome = mat.dfs()
