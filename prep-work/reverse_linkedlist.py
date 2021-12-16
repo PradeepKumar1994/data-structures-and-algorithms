@@ -37,11 +37,10 @@ class Linkedlist():
                 self.node.next = self.arraylist[temp_count - 1]
             else:
                 self.arraylist[temp_count].next = self.arraylist[temp_count-1]
-                print(self.arraylist[temp_count].next)
             temp_count = temp_count - 1
         self.node = self.arraylist[0]
         self.arraylist = self._rev_arraylist()
-        print(self.arraylist)
+        return None
         
 
     def _rev_arraylist(self):
@@ -55,9 +54,12 @@ class Linkedlist():
     def print(self):
         print('-----')
         temp_node = self.head.next 
-        while(temp_node.next):
+        while(temp_node):
             print(temp_node.data)
-            temp_node = temp_node.next
+            if(temp_node.next != None):
+                temp_node = temp_node.next
+            else:
+                return None
         
     def print_details(self):
         for i in self.arraylist:
