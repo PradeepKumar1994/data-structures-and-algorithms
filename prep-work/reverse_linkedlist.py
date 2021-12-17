@@ -1,4 +1,7 @@
-
+'''
+Time complexity: O(N)
+Space complexity: O(N)
+'''
 class Head():
     def __init__(self):
         self.next = None
