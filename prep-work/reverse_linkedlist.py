@@ -32,38 +32,48 @@ class Linkedlist():
         while(temp_count > -1):
             if(temp_count==0):
                 self.arraylist[temp_count].next = None
+                self.node = self.arraylist[temp_count]
             elif(temp_count == self.count - 1):
                 self.head.next = self.node
-                self.node.next = self.arraylist[temp_count - 1]
+                self.arraylist[temp_count].next = self.arraylist[temp_count-1]                
             else:
                 self.arraylist[temp_count].next = self.arraylist[temp_count-1]
             temp_count = temp_count - 1
-        self.node = self.arraylist[0]
         self.arraylist = self._rev_arraylist()
+
         return None
         
-
     def _rev_arraylist(self):
         stack = []
         temp_count = self.count - 1
         while(temp_count>-1):
             stack.append(self.arraylist[temp_count])
             temp_count = temp_count - 1
-        return self.arraylist
 
-    def print(self):
-        print('-----')
+        return stack
+
+    def print_data(self):
         temp_node = self.head.next 
+        print('HEAD: ',temp_node)
         while(temp_node):
-            print(temp_node.data)
+            print('Next: {} Data: {}'.format(temp_node.next, temp_node.data))
             if(temp_node.next != None):
                 temp_node = temp_node.next
             else:
                 return None
         
+    def print_next(self):
+
+        temp_node = self.head.next
+        while(temp_node):
+            print(temp_node.next)
+            temp_node = temp_node.next
+        return None
+
     def print_details(self):
         for i in self.arraylist:
             print(i.data)
+        return None
 
 ll = Linkedlist()
 ll.add_element(1)
@@ -72,4 +82,13 @@ ll.add_element(3)
 ll.add_element(4)
 ll.add_element(5)
 ll.reverse_linkedlist()
-ll.print()
+ll.print_data()
+print('---')
+print(ll.node)
+print(ll.head.next)
+print('---')
+ll.reverse_linkedlist()
+ll.print_data()
+print('---')
+ll.reverse_linkedlist()
+ll.print_data()
