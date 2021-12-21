@@ -24,7 +24,7 @@ class Graph():
     def _dfs(self, visited, current_vertices):
         '''
         Time complexity: O(V+E)
-        Space complexity: O(V)
+        Space complexity: O(V*E)
         '''
         if(len(visited) < self.vertices):
             for i in self.adjacency_list[current_vertices]:
@@ -36,7 +36,7 @@ class Graph():
     def bfs(self):
         '''
         Time complexity: O(V+E)
-        Space complexity: O(V)
+        Space complexity: O(V*E)
         '''
         current_vertex = 0
         visited, queue = [], [current_vertex]
