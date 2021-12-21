@@ -1,5 +1,6 @@
 '''
-Time complexity: O(N)
+Time complexity: O(N) - for chaining
+Time complexity: O(1) - regular hash table
 Space complexity: O(N)
 '''
 
