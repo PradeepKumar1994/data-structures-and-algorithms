@@ -3,44 +3,39 @@ Time complexity: O()
 Space complexity: O(1)
 '''
 
-class Quick_sort():
-    def __init__(self, array):
-        self.array = array
+def Quicksort(array, start, end):
 
-    def Quicksort(self, start, end):
+    if(start < end):
+        loc = _quicksort(array, start, end)
+        array = Quicksort(array, start, loc-1)
+        array = Quicksort(array, loc+1, end)
+        print(array)
+    return array
 
-        if(start < end):
-            loc = self._quicksort(start, end)
-            self.Quicksort(start, loc-1)
-            self.Quicksort(loc+1, end)
-            print(self.array)
-        return self.array
+def swap(a, b):
+    return b, a
 
-    def swap(self,a, b):
-        return b, a
+def _quicksort(array, start, end):
+    begin_array = start
+    pivot = array[start]
+    length = len(array)-1
+    while(start<end):
 
-    def _quicksort(self, start, end):
-        begin_array = start
-        pivot = self.array[start]
-        length = len(self.array)-1
-        while(start<end):
+        while(start < length and array[start]<=pivot):
+            start = start+1
 
-            while(start < length and self.array[start]<=pivot):
-                start = start+1
+        while(end > -1 and array[end]>pivot):
+            end = end-1
 
-            while(end > -1 and self.array[end]>pivot):
-                end = end-1
-
-            if(start<end):
-                print('Before: {} Pivot: {}'.format(self.array, pivot))
-                self.array[start], self.array[end] = self.swap(self.array[start], self.array[end])
-                print('After: ',self.array)
-                
-        print('Before: {} Pivot: {}'.format(self.array, pivot))
-        self.array[begin_array], self.array[end] = self.swap(self.array[begin_array], self.array[end])
-        print('After: ',self.array)
-        return end
+        if(start<end):
+            print('Before: {} Pivot: {}'.format(array, pivot))
+            array[start], array[end] = swap(array[start], array[end])
+            print('After: ',array)
+            
+    print('Before: {} Pivot: {}'.format(array, pivot))
+    array[begin_array], array[end] = swap(array[begin_array], array[end])
+    print('After: ',array)
+    return end
 
 array = [7, 6, 10, 5, 9, 2, 1, 15, 7]
-qs =Quick_sort(array)
-print('final-->',qs.Quicksort(0, len(array)-1))
+print('final-->',Quicksort(array, 0, len(array)-1))
