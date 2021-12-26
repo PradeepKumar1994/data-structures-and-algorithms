@@ -1,6 +1,6 @@
 '''
-Time complexity: O()
-Space complexity: O(1)
+Time complexity: O(N^2)
+Space complexity: O(N)
 '''
 
 def Quicksort(array, start, end):
