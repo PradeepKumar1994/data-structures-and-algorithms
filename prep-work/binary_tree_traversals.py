@@ -1,5 +1,5 @@
 '''
-Time complexity: O()
+Time complexity: O(log N)
 Space complexity: O(N)
 '''
 
@@ -35,6 +35,7 @@ class BinarySearch():
         return None
 
     def inorder(self):
+        #Time complexity: O(N)
         return self._inorder(self.root)
 
     def _inorder(self, root):
@@ -44,6 +45,7 @@ class BinarySearch():
             self._inorder(root.right)
 
     def pre_order(self):
+        #Time complexity: O(N)
         return self._preorder(self.root)
 
     def _preorder(self, root):
@@ -53,6 +55,7 @@ class BinarySearch():
             self._preorder(root.right)
 
     def post_order(self):
+        #Time complexity: O(N)
         return self._postorder(self.root)
 
     def _postorder(self, root):
