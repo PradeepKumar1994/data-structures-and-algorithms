@@ -17,8 +17,8 @@ class Trie():
 
     def _insert(self, root, string):
         length = len(string)
-        if(length>-1):
-            ascii_value = ord(string[0])
+        if(length>0):
+            ascii_value = ord(string[0]) - 97
             print('ascii_value: ',ascii_value)
             if(root.array_block[ascii_value]):
                 root = root.array_block[ascii_value]
@@ -26,7 +26,7 @@ class Trie():
                 print('rem: ',string)
                 return self._insert(root, string)
             else:
-                root[ascii_value]=Node()
+                root.array_block[ascii_value] = Node()
                 string = string[1:]
                 print('rem: ',string)
                 return self._insert(root, string)
