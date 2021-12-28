@@ -1,6 +1,7 @@
 '''
-Time complexity: O()
-Space complexity: O(N)
+Space complexity: O(2^S) - S is for length of string
+as an array is created of size 26 for each character.
+It lies between O(S!) and O(2^S)
 '''
 
 class Node():
@@ -16,6 +17,7 @@ class Trie():
         return self._insert(root, string)
 
     def _insert(self, root, string):
+        #Time complexity: O(S)
         length = len(string)
         if(length>0):
             ascii_value = ord(string[0]) - 97
