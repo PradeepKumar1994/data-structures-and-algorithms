@@ -36,5 +36,23 @@ class Trie():
         print('--',self.root.array_block[1])
         
 
+    def exists(self, string):
+        if(len(string)>-1 and string[0]!= ' '):
+            return self._exists(string, self.root)
+        return None
+
+    def _exists(self, string, root):
+        if(len(string)>0):
+            ascii_value = ord(string[0])-97
+            if(root.array_block[ascii_value]!=None):
+                string = string[1:]
+                root = root.array_block[ascii_value]
+                self._exists(string, root)
+            else:
+                return False
+        return True
+                
+
 trie = Trie()
-trie.insert('aba')
+trie.insert('pradeep')
+print(trie.exists('pradeep'))
