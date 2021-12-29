@@ -1,5 +1,6 @@
 '''
-Space complexity: O(N)
+Space complexity: O(N) for holding all elements
+if for reversing a linkedlist: O(1) since no new elements are added
 '''
 
 class Node():
@@ -17,6 +18,8 @@ class Linkedlist():
         self.node = None
 
     def insert(self, data):
+        #time complexit: O(1) for one element
+        #for n elements it would be O(N)
         if(not self.head.next):
             self.node = Node(data)
             self.head.next = self.node
@@ -25,6 +28,7 @@ class Linkedlist():
             self.node = self.node.next
 
     def traverse_(self):
+        #time complexit: O(N)
         temp_node = self.head.next
 
         while(temp_node!=None):
@@ -33,10 +37,11 @@ class Linkedlist():
         return None
 
     def reverse_linkedlist(self):
+        #time complexit: O(N)
         previous = None
         current = self.head.next
         next = current.next
-
+        
         while(next!=None):
             if(previous==None):
                 current.next = None #setting first node next to none
