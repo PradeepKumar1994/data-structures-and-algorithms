@@ -1,6 +1,6 @@
 '''
 Space complexity: O(N) for holding all elements
-if for reversing a linkedlist: O(1) since no new elements are added
+reversing a linkedlist: O(1) since no additional storage is used
 '''
 
 class Node():
