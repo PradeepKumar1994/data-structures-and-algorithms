@@ -1,65 +1,50 @@
+'''
+Space complexity: O(N)
+'''
+import ctypes
 
 class ArrayList():
-    def __init__(self, data = None):
-        self.MAX_SIZE = 1
-        if(data==None):
-            self.storage = [None]
-            self.length = 0
+    def __init__(self):
+        self.current_index = 0
+        self.MAX = 1
+        self.arraylist = (self.MAX*ctypes.bject)()
+
+    def _insert(self, data):
+        if(self.current_index):
+            self.arraylist[]=data
+
+    def insert(self, data):
+        if(self.current_index==self.MAX):
+            #time complexity: O(1)
+            self.arraylist = increase_capacity()
         else:
-            self.storage = [data]
-            self.length = 1
-            self.storage = self.storage_resize()
+            #auxilarated time complexity: O(1)
+            if(self.current_index):
+                self.arraylist[self.current_index]=data
 
-    def increase_length(self):
-        self.length = self.length + 1
-
-    def decrease_length(self):
-        self.length = self.length - 1
-
-    def storage_resize(self):
-        temp = self.length
-        self.MAX_SIZE = self.length * 2
-        new_storage = [None] * self.MAX_SIZE
-        for i in range(0,self.length):
-            new_storage[i] = self.storage[i]
-        return new_storage
-
-    def append(self, data):
-        if(self.length == self.MAX_SIZE):
-            self.storage = self.storage_resize()
-        self.storage[self.length] = data
-        self.increase_length()
-
-    def pop(self, index = None):
-        if(self.length < 1):
-            return 'Empty ArrayList'
+    def insertAt(self, index, data):
+        if(index<0):
+            return "Please insert element greater than -1 index"
+        elif(index==self.current_index):
+            self.insert(data)
+        elif(index>self.current_index):
+            return 'Please appropriate enter index same or less than: {}'.format(self.MAX)
         else:
-            return self._pop(index)
-    
-    def _pop(self, index):
-        if(index == None):
-            self.storage[self.length-1] = None
-        elif(index < -1 and index > self.length-1):
-            return "Please provide valid index"
-        else:
-            self.storage[index] = None
-        self.decrease_length()
+            pass
 
-    def print_(self, first=None, last=None):
-        if(first==None and last==None):
-            return self.storage[0:self.length]
-        elif(first < 0 and last > self.length):
-            return 'IndexOutOfBounds'
-        else:
-            return self.storage[first:last]
+    def increase_capacity(self):
+        increase_cap = 2* self.MAX
+        resized_array = (increase_cap*ctypes.bject)()
+        for i in range(self.current_index):
+            resized_array[i] = self.arraylist[i]
+        self.MAX = increase_cap
+        return resized_array
 
-list_ = ArrayList()
-list_.append(1)
-list_.append(2)
-list_.append(4)
-list_.append(3)
-list_.append(7)
-list_.append(1)
-print(list_.print_())
-list_.pop()
-print(list_.print_())
+    def removeAt(self, index):
+        pass
+
+    def remove(self)
+        pass
+
+    def removeEnd(self):
+        self.remove()
