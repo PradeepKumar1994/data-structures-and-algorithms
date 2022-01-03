@@ -21,6 +21,7 @@ class ArrayList():
 
     def insertAt(self, index, data):
         #time complexity: O(N)
+        print(self.arraylist[self.current_index-1])
         if(index<0):
             return "Please insert element greater than -1 index"
         elif(index==self.current_index):
@@ -28,7 +29,11 @@ class ArrayList():
         elif(index>self.current_index):
             return 'Please appropriate enter index same or less than: {}'.format(self.MAX)
         else:#less than length of the array
+            if(self.current_index-1==self.MAX):
+                self.arraylist = self.increase_capacity()
             for i in range(self.current_index-1,index-1,-1):
+                print('chaning: ',self.arraylist[i])
+                print(self.MAX)
                 self.arraylist[i+1] = self.arraylist[i]
             self.arraylist[index] = data
 
@@ -47,8 +52,8 @@ class ArrayList():
             return "Please insert element greater than -1 index"
         else:
         
-            print(self.current_index,self.arraylist[self.current_index])
-            for i in range(index+1,self.current_index):
+            print('--',self.current_index,self.arraylist[self.current_index])
+            for i in range(index+1,self.current_index+1):
                 self.arraylist[i-1] = self.arraylist[i]
                 print(i, self.current_index)
             self.arraylist[self.current_index]=0
@@ -70,8 +75,9 @@ array.insert(4)
 array.insert(6)
 array.insert(7)
 array.insert(8)
-array.insertAt(11, 5)
-array.insertAt(11, 5)
-print(array.arraylist[:])
+print(array.arraylist._objects.values())
+array.insertAt(4,5)
+array.insertAt(4,5)
+print(array.arraylist._objects.values())
 array.removeAt(5)
-print('__>',array.arraylist[:])
+print(array.arraylist._objects.values())
