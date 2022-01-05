@@ -19,9 +19,19 @@ class ArrayList():
             self.arraylist[self.current_index]=data
             self.current_index = self.current_index + 1
 
+    def resize_arraylist_check(self):
+        if(self.current_index==self.MAX):
+            self.arraylist = self.increase_capacity()
+            print(self.arraylist._objects.values())
+        return None
+
+    def increment_current_index_insertAt(self, last_index):
+        if(last_index == self.current_index-1):
+            self.current_index = self.current_index + 1
+        
     def insertAt(self, index, data):
         #time complexity: O(N)
-        print(self.arraylist[self.current_index-1])
+        print('last',self.current_index)
         if(index<0):
             return "Please insert element greater than -1 index"
         elif(index==self.current_index):
@@ -29,12 +39,10 @@ class ArrayList():
         elif(index>self.current_index):
             return 'Please appropriate enter index same or less than: {}'.format(self.MAX)
         else:#less than length of the array
-            if(self.current_index-1==self.MAX):
-                self.arraylist = self.increase_capacity()
             for i in range(self.current_index-1,index-1,-1):
-                print('chaning: ',self.arraylist[i])
-                print(self.MAX)
+                self.resize_arraylist_check()
                 self.arraylist[i+1] = self.arraylist[i]
+                self.increment_current_index_insertAt(i)
             self.arraylist[index] = data
 
     def increase_capacity(self):
@@ -51,14 +59,13 @@ class ArrayList():
         if(index<0):
             return "Please insert element greater than -1 index"
         else:
-        
-            print('--',self.current_index,self.arraylist[self.current_index])
-            for i in range(index+1,self.current_index+1):
+            for i in range(index,self.current_index):
+                self.resize_arraylist_check()
                 self.arraylist[i-1] = self.arraylist[i]
-                print(i, self.current_index)
-            self.arraylist[self.current_index]=0
+            self.arraylist[self.current_index-1]=0
+            self.decrement_current_index()
 
-    def remove(self):
+    def decrement_current_index(self):
         self.current_index= self.current_index-1
 
     def removeEnd(self):
@@ -77,6 +84,7 @@ array.insert(7)
 array.insert(8)
 print(array.arraylist._objects.values())
 array.insertAt(4,5)
+print(array.arraylist._objects.values())
 array.insertAt(4,5)
 print(array.arraylist._objects.values())
 array.removeAt(5)
