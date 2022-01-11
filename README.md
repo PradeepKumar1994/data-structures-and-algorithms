@@ -34,7 +34,7 @@ My list to learn under queue:
 ## To Do
 
 - [ ] StringBuilder
-- [ ] ArrayList
+- [X] ArrayList
 - [ ] Binary Search on a String
 - [ ] Towers of Hanoi
 - [ ] N Queens
