@@ -1,7 +1,3 @@
-'''
-Time complexity: 
-Space complexity:
-'''
 
 class Graph():
     def __init__(self, adjacency_list):

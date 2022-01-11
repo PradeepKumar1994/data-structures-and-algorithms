@@ -56,5 +56,5 @@ class Trie():
                 
 
 trie = Trie()
-trie.insert('pradeep')
-print(trie.exists('pradeep'))
+trie.insert('q')
+print(trie.exists('q'))

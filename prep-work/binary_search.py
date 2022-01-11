@@ -1,6 +1,6 @@
 '''
-Time complexity: 
-Space complexity:
+Time complexity: O(log N)
+Space complexity: O(1)
 '''
 class Binary_Search():
     def __init__(self, data):

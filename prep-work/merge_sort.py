@@ -1,6 +1,6 @@
 '''
-Time complexity: O(log N)
-Space complexity: O(1)
+Time complexity: O(N log N)
+Space complexity: O(N)
 '''
 
 def merge_sort(array):

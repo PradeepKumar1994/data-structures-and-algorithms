@@ -1,6 +1,6 @@
 '''
-Time complexity: O()
-Space complexity: O()
+Time complexity: O(S)
+Space complexity: O(S)
 '''
 
 class Node():
