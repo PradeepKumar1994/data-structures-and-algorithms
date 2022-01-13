@@ -40,7 +40,7 @@ class DFS(GraphTraversals):
 
     def dfs_(self):
         current = min(self.graph.keys())
-        visited = []
+        visited = [current]
         return self.dfs_traversal(visited, current)
 
     def visited_equals_graph(self, visited):
@@ -48,15 +48,11 @@ class DFS(GraphTraversals):
             return visited
 
     def dfs_traversal(self, visited, current):
-        for i in self.graph[current]:
-            if(len(visited)==len(self.graph)):
-                return visited
-            if(i not in visited):
-                visited.append(current)
-                current = i
-                self.dfs_traversal(visited, current)
-            print(current)
-
+        if(len(visited)<len(self.graph.keys())):
+            for i in self.graph[current]:
+                if(i not in visited):
+                    visited.append(i)
+                    visited = self.dfs_traversal(visited, i)
         return visited
 
 
@@ -79,9 +75,8 @@ bfs.insert(5, 4)
 
 bfs.insert(6, 2)
 bfs.insert(6, 1)
-print(bfs.print_graph())
 
-print(bfs.bfs_traversal())
+print('BFS: ',bfs.bfs_traversal())
 
 dfs = DFS()
 
@@ -103,4 +98,4 @@ dfs.insert(5, 4)
 dfs.insert(6, 2)
 dfs.insert(6, 1)
 
-print(dfs.dfs_())
+print('DFS: ',dfs.dfs_())
