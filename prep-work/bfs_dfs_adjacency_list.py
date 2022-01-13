@@ -1,54 +1,97 @@
 
-class Graph():
-    def __init__(self, adjacency_list):
-        self.adjacency_list = adjacency_list
-        self.vertices = self.determine_vertices()
+from collections import defaultdict
 
-    def determine_vertices(self):
-        vertices = len(adjacency_list)
-        return vertices
+class GraphTraversals():
+    def __init__(self):
+        self.graph = defaultdict(list)
 
-    def dfs(self):
-        visited = [0]
-        visited = self._dfs(visited, visited[0])
-        return visited
+    def print_graph(self):
+        return self.graph
 
-    def add_visited(self, visited, i):
-        visited.append(i)
-        return visited
+    def insert(self, v1, v2):
+        if(v2 not in self.graph[v1]):
+            self.graph[v1].append(v2)
 
-    def _dfs(self, visited, current_vertices):
-        '''
-        Time complexity: O(V+E)
-        Space complexity: O(V*E)
-        '''
-        if(len(visited) < self.vertices):
-            for i in self.adjacency_list[current_vertices]:
-                if(i not in visited):
-                    self.add_visited(visited, i)
-                    visited = self._dfs(visited, i)
-        return visited
+class BFS(GraphTraversals):
+    def __init__(self):
+        super().__init__()
 
-    def bfs(self):
-        '''
-        Time complexity: O(V+E)
-        Space complexity: O(V*E)
-        '''
-        current_vertex = 0
-        visited, queue = [], [current_vertex]
-        while(len(visited)<self.vertices):
-            for i in self.adjacency_list[current_vertex]:
-                if(i not in queue and i not in visited):
-                    queue.append(i)
+    def bfs_traversal(self):
+        queue = []
+        visited = []
+        
+        queue.append(min(self.graph.keys()))
+        while(len(queue)>0):
+            for vertex in self.graph[queue[0]]:
+                if((vertex not in queue) and (vertex not in visited)):
+                    queue.append(vertex)
+            
             visited.append(queue.pop(0))
-            if(len(queue)>0):
-                current_vertex = queue[0]
-            else:
-                return visited
+
         return visited
 
-adjacency_list = [[1,2],[0,2,4],[0,1,3],[2],[1]]
+class DFS(GraphTraversals):
+    def __init__(self):
+        super().__init__()
 
-graph = Graph(adjacency_list)
-print(graph.dfs())
-print(graph.bfs())
+    def dfs_(self):
+        current = min(self.graph.keys())
+        visited = [current]
+        return self.dfs_traversal(visited, current)
+
+    def visited_equals_graph(self, visited):
+        if(len(visited)!=len(self.graph)):
+            return visited
+
+    def dfs_traversal(self, visited, current):
+        if(len(visited)<len(self.graph.keys())):
+            for i in self.graph[current]:
+                if(i not in visited):
+                    visited.append(i)
+                    visited = self.dfs_traversal(visited, i)
+        return visited
+
+
+
+bfs = BFS()
+bfs.insert(1, 2)
+bfs.insert(1,4)
+
+bfs.insert(2,6)
+bfs.insert(2,3)
+
+bfs.insert(3, 2)
+bfs.insert(3, 4)
+
+bfs.insert(4, 1)
+bfs.insert(4, 3)
+bfs.insert(4, 5)
+
+bfs.insert(5, 4)
+
+bfs.insert(6, 2)
+bfs.insert(6, 1)
+
+print('BFS: ',bfs.bfs_traversal())
+
+dfs = DFS()
+
+dfs.insert(1, 2)
+dfs.insert(1,4)
+
+dfs.insert(2,6)
+dfs.insert(2,3)
+
+dfs.insert(3, 2)
+dfs.insert(3, 4)
+
+dfs.insert(4, 1)
+dfs.insert(4, 3)
+dfs.insert(4, 5)
+
+dfs.insert(5, 4)
+
+dfs.insert(6, 2)
+dfs.insert(6, 1)
+
+print('DFS: ',dfs.dfs_())
