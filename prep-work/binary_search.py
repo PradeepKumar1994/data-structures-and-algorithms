@@ -2,34 +2,48 @@
 Time complexity: 
 Space complexity:
 '''
-class Binary_Search():
-    def __init__(self, data):
-        self.data = data
 
-    def binary_search_recur(self, target, low, high):
-        if(low<=high):
-            mid = (low+high)//2
-            if(self.data[mid]==target):
-                return True
-            elif(self.data[mid]>target):
-                return self.binary_search_recur(target, low, mid-1)
-            elif(self.data[mid]<target):
-                return self.binary_search_recur(target, mid+1, high)
-        return False
+def binary_search_recur(array, low, high, target):
 
-    def binary_search_iter(self, target, low, high):
-        while(low<=high):
-            mid = (low+high)//2
-            if(self.data[mid]==target):
-                return True
-            elif(self.data[mid]>target):
-                high = mid - 1 
-            elif(self.data[mid]<target):
-                low = mid + 1
-        return False
+    if(low < high):
+        mid = (low + high)//2
+        if(array[mid]==target):
+            return True
+
+        elif(arr[mid]<target):
+            return binary_search_recur(arr, mid+1, high, target)
+
+        else:
+            return binary_search_iter(arr, mid-1, target)
+        
+    return False
 
 
-array = [0,1,2,3,4,5,6,7,8,9]
-bs=Binary_Search(array)
-print(bs.binary_search_recur(11, 0, 9))
-print(bs.binary_search_iter(10, 0, 9))
+def binary_search_iter(array, target):
+
+    low = 0
+    high = len(array)-1
+
+    while(low<high):
+
+        mid = (low+high)//2
+
+        if(array[mid]==target):
+            return True
+        
+        elif(array[mid]<target):
+            low = mid + 1
+
+        else:
+            high = mid - 1
+
+    return False
+
+if __name__ == '__main__':
+
+    arr = [0,1,2,3,4,5,6,7,8,9]
+    low = 0
+    high = len(arr)
+    target = 10
+    print(binary_search_recur(arr, low, high, target))
+    print(binary_search_iter(arr, target))
